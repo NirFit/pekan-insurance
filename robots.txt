@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nirfit.github.io/pekan-insurance/sitemap.xml

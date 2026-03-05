@@ -9,11 +9,39 @@
     <meta property="og:title" content="פקאן סוכנות לביטוח בע&quot;מ">
     <meta property="og:description" content="פתרונות ביטוח מקצועיים בעפולה ורחובות מאז 2015">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nirfit.github.io/pekan-insurance/">
+    <meta property="og:locale" content="he_IL">
+    <link rel="canonical" href="https://nirfit.github.io/pekan-insurance/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="config.js"></script>
+    <!-- Google Analytics 4 - הוסף GA_ID ב-config.js -->
+    <script>
+    if (typeof CONFIG !== 'undefined' && CONFIG.GA_ID) {
+        var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id='+CONFIG.GA_ID;document.head.appendChild(s);
+        window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());
+        gtag('config',CONFIG.GA_ID);
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "InsuranceAgency",
+        "name": "פקאן סוכנות לביטוח בע\"מ",
+        "description": "סוכנות ביטוח מובילה בעפולה ורחובות. ביטוחי בריאות, רכב, נסיעות וחיים.",
+        "url": "https://nirfit.github.io/pekan-insurance/",
+        "telephone": ["+972-74-7492006", "+972-8-6441880"],
+        "email": "pekan@pekan-ins.co.il",
+        "address": [
+            {"@type": "PostalAddress", "streetAddress": "ארלוזורוב 11/ב", "addressLocality": "עפולה"},
+            {"@type": "PostalAddress", "streetAddress": "פקיעין 2", "addressLocality": "רחובות"}
+        ],
+        "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "09:00", "closes": "18:00"}
+    }
+    </script>
 </head>
 <body>
     <!-- Preloader -->
@@ -65,7 +93,7 @@
     <!-- Hero -->
     <section class="hero" id="hero">
         <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80" alt="" class="hero-img">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80" alt="פקאן ביטוח" class="hero-img" fetchpriority="high">
             <div class="hero-overlay"></div>
         </div>
         <canvas class="hero-particles" id="heroParticles"></canvas>
@@ -143,7 +171,7 @@
             <div class="cards-grid">
                 <article class="premium-card reveal" data-delay="0">
                     <div class="premium-card-img">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80" alt="ביטוחי בריאות">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80" alt="ביטוחי בריאות" loading="lazy">
                         <div class="premium-card-overlay">
                             <i class="fas fa-heart-pulse"></i>
                         </div>
@@ -156,7 +184,7 @@
                 </article>
                 <article class="premium-card reveal" data-delay="1">
                     <div class="premium-card-img">
-                        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=600&q=80" alt="ביטוחי רכב">
+                        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=600&q=80" alt="ביטוחי רכב" loading="lazy">
                         <div class="premium-card-overlay">
                             <i class="fas fa-car-side"></i>
                         </div>
@@ -169,7 +197,7 @@
                 </article>
                 <article class="premium-card reveal" data-delay="2">
                     <div class="premium-card-img">
-                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80" alt="ביטוח נסיעות">
+                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80" alt="ביטוח נסיעות" loading="lazy">
                         <div class="premium-card-overlay">
                             <i class="fas fa-plane-departure"></i>
                         </div>
@@ -190,8 +218,8 @@
             <div class="about-layout">
                 <div class="about-visual reveal">
                     <div class="about-image-stack">
-                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=80" alt="צוות" class="about-img-1">
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=80" alt="פגישה" class="about-img-2">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=80" alt="צוות פקאן ביטוח" class="about-img-1" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=80" alt="פגישת ייעוץ" class="about-img-2" loading="lazy">
                         <div class="about-experience-badge">
                             <span class="exp-number">10+</span>
                             <span class="exp-text">שנות<br>ניסיון</span>
@@ -271,7 +299,7 @@
     <!-- Why Us -->
     <section class="why-section" id="why-us">
         <div class="why-bg">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=60" alt="" class="why-bg-img">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=60" alt="" class="why-bg-img" loading="lazy">
             <div class="why-bg-overlay"></div>
         </div>
         <div class="container">
@@ -442,7 +470,7 @@
                     <div class="section-tag">יצירת קשר</div>
                     <h2 class="section-heading">צור <span class="gold">קשר</span></h2>
                     <p>לקבלת מידע נוסף אנא מלאו את הטופס ואנו נחזור אליכם בהקדם</p>
-                    <form class="premium-form" id="contactForm">
+                    <form class="premium-form" id="contactForm" action="#" method="POST">
                         <div class="form-row">
                             <div class="form-field">
                                 <input type="text" name="name" id="name" required placeholder=" ">

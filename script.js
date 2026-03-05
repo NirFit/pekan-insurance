@@ -104,25 +104,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // === Contact Form ===
+    // === Contact Form (Formspree) ===
     const contactForm = document.getElementById('contactForm');
-    contactForm?.addEventListener('submit', (e) => {
+    contactForm?.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = contactForm.querySelector('button[type="submit"]');
         const originalHTML = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> שולח...';
         btn.disabled = true;
 
-        setTimeout(() => {
-            btn.innerHTML = '<i class="fas fa-check"></i> נשלח בהצלחה!';
+        const formId = typeof CONFIG !== 'undefined' && CONFIG.FORMSPREE_ID && CONFIG.FORMSPREE_ID !== 'YOUR_FORMSPREE_ID'
+            ? CONFIG.FORMSPREE_ID
+            : null;
+
+        if (formId) {
+            try {
+                const formData = new FormData(contactForm);
+                const res = await fetch(`https://formspree.io/f/${formId}`, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    btn.innerHTML = '<i class="fas fa-check"></i> נשלח בהצלחה!';
+                    btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                    contactForm.reset();
+                } else {
+                    throw new Error('שגיאה בשליחה');
+                }
+            } catch (err) {
+                btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> שגיאה - נסה שוב';
+                btn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+            }
+        } else {
+            btn.innerHTML = '<i class="fas fa-check"></i> נשלח!';
             btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
             contactForm.reset();
-            setTimeout(() => {
-                btn.innerHTML = originalHTML;
-                btn.style.background = '';
-                btn.disabled = false;
-            }, 3000);
-        }, 1500);
+        }
+        setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.style.background = '';
+            btn.disabled = false;
+        }, 3000);
     });
 
     // === Particles ===
