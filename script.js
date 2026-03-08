@@ -81,6 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => closeNav());
     });
 
+    // === כפתור נגישות ===
+    document.getElementById('a11yFloat')?.addEventListener('click', () => {
+        document.getElementById('a11y-statement')?.showModal();
+    });
+
     // === Smooth Scroll ===
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
