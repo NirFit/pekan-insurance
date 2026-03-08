@@ -112,8 +112,8 @@ a { text-decoration: none; }
 .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; font-size: 1rem; font-weight: 600; font-family: inherit; border-radius: 50px; transition: all 0.4s var(--ease); cursor: pointer; border: none; }
 .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--dark); box-shadow: 0 8px 32px rgba(212,168,67,0.3); }
 .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(212,168,67,0.45); }
-.btn-glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); color: var(--white); border: 1px solid rgba(255,255,255,0.15); }
-.btn-glass:hover { background: rgba(255,255,255,0.14); border-color: var(--gold); color: var(--gold); }
+.btn-glass { background: rgba(255,255,255,0.12); backdrop-filter: blur(16px); color: var(--white); border: 1px solid rgba(212,168,67,0.35); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+.btn-glass:hover { background: rgba(212,168,67,0.15); border-color: var(--gold); color: var(--gold-light); box-shadow: 0 6px 24px rgba(212,168,67,0.2); }
 .btn-lg { padding: 18px 36px; font-size: 1.05rem; }
 .btn-full { width: 100%; justify-content: center; }
 
@@ -146,20 +146,20 @@ a { text-decoration: none; }
 .money-icon { font-size: 1.8rem; color: var(--gold); opacity: 0.6; }
 
 /* Hero CTA + 24h badge */
-.hero-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.quote-badge { font-size: 0.8rem; font-weight: 600; color: var(--gold-light); display: flex; align-items: center; gap: 6px; }
-.quote-badge i { font-size: 0.75rem; }
-.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; animation: fadeUp 0.8s ease 0.5s both; }
+.hero-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.quote-badge { font-size: 0.85rem; font-weight: 600; color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(212,168,67,0.12); border: 1px solid rgba(212,168,67,0.25); border-radius: 50px; }
+.quote-badge i { font-size: 0.8rem; color: var(--gold); }
+.hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; animation: fadeUp 0.8s ease 0.5s both; align-items: flex-start; }
 .hero-buttons .hero-cta-wrap { flex: 0 0 auto; }
 
-/* Results Ticker */
+/* Results Ticker - קרוסלה אינסופית */
 .results-ticker { background: linear-gradient(90deg, var(--dark-2), var(--dark-3)); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 16px 0; margin-bottom: 56px; position: relative; overflow: hidden; }
 .ticker-wrap { overflow: hidden; }
-.ticker-track { display: flex; gap: 48px; animation: ticker-scroll 25s linear infinite; width: max-content; }
+.ticker-track { display: flex; gap: 48px; animation: ticker-scroll 25s linear infinite; width: max-content; flex-shrink: 0; direction: ltr; }
 .ticker-item { display: flex; align-items: center; gap: 10px; color: var(--gold); font-weight: 700; font-size: 1rem; white-space: nowrap; }
 .ticker-item i { color: #22c55e; font-size: 0.9rem; }
 .ticker-badge { position: absolute; top: 50%; right: 24px; transform: translateY(-50%); background: rgba(212,168,67,0.2); padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: var(--gold); white-space: nowrap; z-index: 2; }
-@keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }
 .hero-title { font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px; }
 .hero-title .line { display: block; color: var(--white); animation: fadeUp 0.8s ease both; }
 .hero-title .line:nth-child(1) { animation-delay: 0.1s; }
