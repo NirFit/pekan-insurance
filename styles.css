@@ -73,7 +73,8 @@ a { text-decoration: none; }
 @keyframes pulse-glow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.1); } }
 
 /* === WhatsApp Float === */
-.whatsapp-float { position: fixed; bottom: 28px; left: 28px; z-index: 999; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; gap: 10px; color: white; font-size: 1.75rem; box-shadow: 0 8px 24px rgba(37,211,102,0.4); transition: all 0.4s var(--ease); animation: wa-pulse 2s infinite; }
+.whatsapp-float { position: fixed; bottom: 28px; left: 28px; z-index: 999; width: 60px; height: 60px; background: #128C7E; border-radius: 50%; display: flex; align-items: center; justify-content: center; gap: 10px; color: white; font-size: 1.75rem; box-shadow: 0 8px 24px rgba(37,211,102,0.4); transition: all 0.4s var(--ease); animation: wa-pulse 2s infinite; text-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 0 1px rgba(0,0,0,0.6); }
+.whatsapp-float i { filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
 .whatsapp-float .wa-text { white-space: nowrap; font-size: 0.95rem; font-weight: 700; font-family: inherit; opacity: 0; max-width: 0; overflow: hidden; transition: all 0.35s var(--ease); }
 .whatsapp-float:hover { width: auto; padding: 0 22px; border-radius: 50px; transform: scale(1.05); }
 .whatsapp-float:hover .wa-text { opacity: 1; max-width: 120px; }
@@ -152,7 +153,7 @@ a { text-decoration: none; }
 .hero-buttons .hero-cta-wrap { flex: 0 0 auto; }
 
 /* Results Ticker */
-.results-ticker { background: linear-gradient(90deg, var(--dark-2), var(--dark-3)); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 16px 0; position: relative; overflow: hidden; }
+.results-ticker { background: linear-gradient(90deg, var(--dark-2), var(--dark-3)); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 16px 0; margin-bottom: 56px; position: relative; overflow: hidden; }
 .ticker-wrap { overflow: hidden; }
 .ticker-track { display: flex; gap: 48px; animation: ticker-scroll 25s linear infinite; width: max-content; }
 .ticker-item { display: flex; align-items: center; gap: 10px; color: var(--gold); font-weight: 700; font-size: 1rem; white-space: nowrap; }
@@ -179,7 +180,7 @@ a { text-decoration: none; }
 .hero-scroll-indicator span { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
 
 /* === Trust Strip === */
-.trust-strip { padding: 48px 0 0; position: relative; z-index: 10; }
+.trust-strip { padding: 32px 0 0; position: relative; }
 .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); overflow: hidden; }
 .trust-item { display: flex; align-items: center; gap: 16px; padding: 28px 24px; border-left: 1px solid var(--glass-border); transition: background 0.3s; }
 .trust-item:last-child { border-left: none; }
