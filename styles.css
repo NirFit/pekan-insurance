@@ -82,7 +82,25 @@ a { text-decoration: none; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,13,26,0.88) 0%, rgba(8,13,26,0.7) 50%, rgba(8,13,26,0.92) 100%); }
 .hero-particles { position: absolute; inset: 0; z-index: 1; }
 .hero-content { position: relative; z-index: 2; text-align: center; max-width: 860px; margin: 0 auto; }
-.hero-badge { display: inline-block; padding: 8px 24px; background: rgba(212,168,67,0.15); border: 1px solid rgba(212,168,67,0.3); color: var(--gold); border-radius: 50px; font-size: 0.9rem; font-weight: 500; margin-bottom: 28px; animation: fadeUp 0.8s ease both; }
+.hero-badges { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; margin-bottom: 28px; animation: fadeUp 0.8s ease both; }
+.hero-badge { display: inline-block; padding: 8px 24px; background: rgba(212,168,67,0.15); border: 1px solid rgba(212,168,67,0.3); color: var(--gold); border-radius: 50px; font-size: 0.9rem; font-weight: 500; }
+.hero-live-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.4); color: #4ade80; border-radius: 50px; font-size: 0.85rem; font-weight: 600; }
+.live-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: live-pulse 1.5s ease-in-out infinite; box-shadow: 0 0 12px rgba(34,197,94,0.8); }
+@keyframes live-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.2); } }
+
+/* Shimmer on CTA */
+.btn-shimmer { position: relative; overflow: hidden; }
+.btn-shimmer::after { content: ''; position: absolute; top: 0; right: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent); animation: shimmer 3s ease-in-out infinite; }
+@keyframes shimmer { 0% { right: -100%; } 50% { right: 150%; } 100% { right: 150%; } }
+
+/* Results Ticker */
+.results-ticker { background: linear-gradient(90deg, var(--dark-2), var(--dark-3)); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 16px 0; position: relative; overflow: hidden; }
+.ticker-wrap { overflow: hidden; }
+.ticker-track { display: flex; gap: 48px; animation: ticker-scroll 25s linear infinite; width: max-content; }
+.ticker-item { display: flex; align-items: center; gap: 10px; color: var(--gold); font-weight: 700; font-size: 1rem; white-space: nowrap; }
+.ticker-item i { color: #22c55e; font-size: 0.9rem; }
+.ticker-badge { position: absolute; top: 50%; right: 24px; transform: translateY(-50%); background: rgba(212,168,67,0.2); padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: var(--gold); white-space: nowrap; z-index: 2; }
+@keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 .hero-title { font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px; }
 .hero-title .line { display: block; color: var(--white); animation: fadeUp 0.8s ease both; }
 .hero-title .line:nth-child(1) { animation-delay: 0.1s; }
@@ -225,11 +243,17 @@ a { text-decoration: none; }
 
 /* === Partners === */
 .partners-section { padding: 100px 0; }
-.companies-marquee { overflow: hidden; padding: 20px 0; }
-.marquee-track { display: flex; gap: 16px; animation: marquee 25s linear infinite; width: max-content; }
-@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-.company-chip { padding: 16px 32px; background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: 50px; font-weight: 700; color: var(--white); font-size: 1rem; white-space: nowrap; transition: all 0.3s; }
+.companies-marquee { overflow: hidden; padding: 20px 0; margin: 0 -24px; }
+.companies-marquee-inner { overflow: hidden; }
+.marquee-track { display: flex; gap: 16px; animation: marquee 40s linear infinite; width: max-content; flex-shrink: 0; }
+.marquee-track:hover { animation-play-state: paused; }
+.company-chip { padding: 16px 32px; background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: 50px; font-weight: 700; color: var(--white); font-size: 1rem; white-space: nowrap; transition: all 0.3s; flex-shrink: 0; }
 .company-chip:hover { border-color: var(--gold); color: var(--gold); }
+/* קורוסלה אינסופית - המשכיות מלאה, מה שיוצא מצד אחד נכנס מהצד השני */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 
 /* === Reviews === */
 .reviews-section { padding: 120px 0; background: var(--dark-2); }
@@ -321,6 +345,8 @@ a { text-decoration: none; }
 }
 
 @media (max-width: 768px) {
+    .ticker-badge { display: none; }
+    .hero-badges { flex-direction: column; }
     .nav-menu { position: fixed; top: 0; right: -100%; width: 80%; max-width: 300px; height: 100vh; background: var(--dark); flex-direction: column; padding: 100px 32px 32px; gap: 20px; transition: right 0.4s var(--ease); box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
     .nav-menu.active { right: 0; }
     .nav-toggle { display: flex; }
