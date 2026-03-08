@@ -179,7 +179,7 @@ a { text-decoration: none; }
 .hero-scroll-indicator span { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
 
 /* === Trust Strip === */
-.trust-strip { padding: 0; position: relative; z-index: 10; margin-top: -40px; }
+.trust-strip { padding: 48px 0 0; position: relative; z-index: 10; }
 .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); overflow: hidden; }
 .trust-item { display: flex; align-items: center; gap: 16px; padding: 28px 24px; border-left: 1px solid var(--glass-border); transition: background 0.3s; }
 .trust-item:last-child { border-left: none; }
@@ -299,23 +299,20 @@ a { text-decoration: none; }
     .testimonial-image { max-width: 280px; margin: 0 auto; }
 }
 
-/* === Partners === */
+/* === Partners - קרוסלה אינסופית עם לוגואים === */
 .partners-section { padding: 100px 0; }
-.partners-logos-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 40px; }
-.partner-logo { aspect-ratio: 2/1; background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; color: var(--white); transition: all 0.4s var(--ease); position: relative; overflow: hidden; }
-.partner-logo::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--brand, var(--gold)), transparent); opacity: 0.15; }
-.partner-logo:hover { transform: translateY(-4px); border-color: var(--brand, var(--gold)); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
-.partner-logo span { position: relative; z-index: 1; }
-.companies-marquee { overflow: hidden; padding: 20px 0; margin: 0 -24px; }
-.companies-marquee-inner { overflow: hidden; }
-.marquee-track { display: flex; gap: 16px; animation: marquee 40s linear infinite; width: max-content; flex-shrink: 0; }
-.marquee-track:hover { animation-play-state: paused; }
-.company-chip { padding: 16px 32px; background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: 50px; font-weight: 700; color: var(--white); font-size: 1rem; white-space: nowrap; transition: all 0.3s; flex-shrink: 0; }
-.company-chip:hover { border-color: var(--gold); color: var(--gold); }
-/* קורוסלה אינסופית - המשכיות מלאה, מה שיוצא מצד אחד נכנס מהצד השני */
-@keyframes marquee {
+.partners-carousel-wrap { margin: 0 -24px; }
+.partners-carousel-mask { overflow: hidden; padding: 24px 0; }
+.partners-carousel-track { display: flex; gap: 32px; width: max-content; flex-shrink: 0; animation: partners-carousel 35s linear infinite; direction: ltr; }
+.partners-carousel-track:hover { animation-play-state: paused; }
+.partner-logo-item { width: 140px; height: 80px; flex-shrink: 0; background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; padding: 12px 20px; transition: all 0.3s; }
+.partner-logo-item:hover { border-color: var(--gold); box-shadow: 0 8px 24px rgba(212,168,67,0.15); }
+.partner-logo-item img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.partner-logo-item .logo-fallback { display: none; font-weight: 700; font-size: 0.95rem; color: var(--white); }
+/* נכנס משמאל יוצא מימין */
+@keyframes partners-carousel {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(50%); }
 }
 
 /* === Reviews === */
@@ -408,7 +405,7 @@ a { text-decoration: none; }
 /* === Responsive === */
 @media (max-width: 1024px) {
     .cards-grid, .why-grid, .reviews-grid { grid-template-columns: 1fr; }
-    .partners-logos-grid { grid-template-columns: repeat(3, 1fr); }
+    .partner-logo-item { width: 120px; height: 70px; }
     .about-layout, .contact-layout { grid-template-columns: 1fr; }
     .services-mosaic { grid-template-columns: repeat(2, 1fr); }
     .trust-grid { grid-template-columns: repeat(2, 1fr); }
@@ -425,7 +422,7 @@ a { text-decoration: none; }
     .hero-badges { flex-direction: column; }
     .money-banner-inner { flex-direction: column; gap: 12px; }
     .money-number { font-size: 2rem; }
-    .partners-logos-grid { grid-template-columns: repeat(2, 1fr); }
+    .partner-logo-item { width: 110px; height: 65px; }
     .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999; opacity: 0; transition: opacity 0.4s var(--ease); pointer-events: none; }
     .nav-overlay.active { display: block; opacity: 1; pointer-events: auto; }
     .nav-menu { position: fixed; top: 0; right: -100%; width: 85%; max-width: 320px; height: 100vh; background: var(--dark); flex-direction: column; padding: 100px 24px 32px; gap: 20px; transition: right 0.4s var(--ease); box-shadow: -10px 0 30px rgba(0,0,0,0.5); overflow-y: auto; z-index: 1000; }
