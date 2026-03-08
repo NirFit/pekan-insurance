@@ -177,6 +177,52 @@ a { text-decoration: none; }
 .why-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--white); margin-bottom: 12px; }
 .why-card p { color: rgba(255,255,255,0.7); font-size: 0.95rem; }
 
+/* === Results & Proofs === */
+.results-section { padding: 120px 0; background: var(--dark-2); }
+.results-story { background: linear-gradient(135deg, var(--dark-3), var(--dark-2)); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 48px 56px; margin-bottom: 48px; position: relative; overflow: hidden; }
+.results-story::before { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 200px; background: radial-gradient(circle, rgba(212,168,67,0.08), transparent); }
+.story-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; background: rgba(212,168,67,0.15); border: 1px solid rgba(212,168,67,0.3); color: var(--gold); border-radius: 50px; font-size: 0.9rem; font-weight: 600; margin-bottom: 24px; }
+.story-badge i { font-size: 1rem; }
+.story-content h3 { font-size: 1.35rem; font-weight: 700; color: var(--white); margin-bottom: 20px; line-height: 1.6; }
+.story-content p { color: var(--text); font-size: 1.05rem; margin-bottom: 16px; line-height: 1.8; }
+.gold-highlight { color: var(--gold); font-weight: 700; }
+.story-motto { font-size: 1.1rem; color: var(--gold-light) !important; font-style: italic; margin-top: 24px !important; padding: 20px; background: rgba(212,168,67,0.08); border-right: 4px solid var(--gold); border-radius: 0 12px 12px 0; }
+.story-cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; color: var(--gold); font-weight: 600; font-size: 1rem; transition: gap 0.3s; }
+.story-cta:hover { gap: 16px; color: var(--gold-light); }
+
+.results-testimonial { margin-bottom: 56px; }
+.testimonial-card { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: center; background: var(--dark-3); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 32px; overflow: hidden; }
+.testimonial-image { border-radius: var(--radius); overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+.testimonial-image img { width: 100%; height: 220px; object-fit: cover; }
+.testimonial-text blockquote { font-size: 1.2rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+.testimonial-text cite { font-size: 0.9rem; color: var(--gray); }
+
+.results-proofs { }
+.proofs-title { display: flex; align-items: center; gap: 12px; font-size: 1.4rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.proofs-title i { color: var(--gold); }
+.proofs-desc { color: var(--gray); margin-bottom: 32px; }
+.proofs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.proof-card { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--glass-border); transition: all 0.4s var(--ease); }
+.proof-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 20px 48px rgba(212,168,67,0.15); }
+.proof-link { display: block; position: relative; aspect-ratio: 3/4; overflow: hidden; }
+.proof-link img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
+.proof-card:hover .proof-link img { transform: scale(1.05); }
+.proof-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,13,26,0.95), rgba(8,13,26,0.4)); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; opacity: 0; transition: opacity 0.4s; }
+.proof-card:hover .proof-overlay { opacity: 1; }
+.proof-overlay span { color: var(--white); font-weight: 700; font-size: 1rem; }
+.proof-overlay small { color: var(--gold); font-size: 0.85rem; margin-top: 4px; }
+
+@media (max-width: 1024px) {
+    .proofs-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonial-card { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .results-story { padding: 32px 24px; }
+    .proofs-grid { grid-template-columns: 1fr; }
+    .testimonial-image { max-width: 280px; margin: 0 auto; }
+}
+
 /* === Partners === */
 .partners-section { padding: 100px 0; }
 .companies-marquee { overflow: hidden; padding: 20px 0; }
