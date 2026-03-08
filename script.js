@@ -1,5 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // === עוגיות - הסכמה והטענת GA ===
+    const COOKIE_KEY = 'pekan_cookie_consent';
+    const cookieBanner = document.getElementById('cookieBanner');
+
+    function loadGoogleAnalytics() {
+        if (typeof CONFIG !== 'undefined' && CONFIG.GA_ID && CONFIG.GA_ID !== '') {
+            const s = document.createElement('script');
+            s.async = 1;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=' + CONFIG.GA_ID;
+            document.head.appendChild(s);
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', CONFIG.GA_ID);
+        }
+    }
+
+    const consent = localStorage.getItem(COOKIE_KEY);
+    if (!consent) {
+        cookieBanner?.removeAttribute('hidden');
+    } else if (consent === 'all') {
+        loadGoogleAnalytics();
+    }
+
+    document.getElementById('cookieAccept')?.addEventListener('click', () => {
+        localStorage.setItem(COOKIE_KEY, 'all');
+        loadGoogleAnalytics();
+        cookieBanner?.setAttribute('hidden', '');
+    });
+    document.getElementById('cookieDecline')?.addEventListener('click', () => {
+        localStorage.setItem(COOKIE_KEY, 'essential');
+        cookieBanner?.setAttribute('hidden', '');
+    });
+    document.getElementById('changeCookiePref')?.addEventListener('click', () => {
+        localStorage.removeItem(COOKIE_KEY);
+        document.getElementById('privacy-policy')?.close();
+        cookieBanner?.removeAttribute('hidden');
+    });
+
     // === Preloader ===
     const preloader = document.getElementById('preloader');
     window.addEventListener('load', () => {
@@ -22,26 +61,43 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateNav);
     updateNav();
 
+    const navOverlay = document.getElementById('navOverlay');
+    function closeNav() {
+        navToggle?.classList.remove('active');
+        navMenu?.classList.remove('active');
+        navOverlay?.classList.remove('active');
+        document.body.style.overflow = '';
+        navToggle?.setAttribute('aria-expanded', 'false');
+    }
     navToggle?.addEventListener('click', () => {
-        navToggle.classList.toggle('active');
-        navMenu?.classList.toggle('active');
-        document.body.style.overflow = navMenu?.classList.contains('active') ? 'hidden' : '';
+        const isOpen = navMenu?.classList.toggle('active');
+        navToggle?.classList.toggle('active', isOpen);
+        navOverlay?.classList.toggle('active', isOpen);
+        navToggle?.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
     });
-
+    navOverlay?.addEventListener('click', closeNav);
     document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            navToggle?.classList.remove('active');
-            navMenu?.classList.remove('active');
-            document.body.style.overflow = '';
-        });
+        link.addEventListener('click', () => closeNav());
     });
 
     // === Smooth Scroll ===
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href === '#') return;
             e.preventDefault();
+            if (href === '#a11y-statement') {
+                document.getElementById('a11y-statement')?.showModal();
+                return;
+            }
+            if (href === '#privacy-policy') {
+                document.getElementById('privacy-policy')?.showModal();
+                return;
+            }
+            if (href === '#' || href === '') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
             const target = document.querySelector(href);
             target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
@@ -52,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const delay = parseInt(entry.target.dataset.delay || 0) * 150;
+                const delay = (parseInt(entry.target.dataset.delay, 10) || 0) * 150;
                 setTimeout(() => entry.target.classList.add('visible'), delay);
                 revealObserver.unobserve(entry.target);
             }
@@ -65,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                animateCounter(entry.target, parseInt(entry.target.dataset.target));
+                animateCounter(entry.target, parseInt(entry.target.dataset.target, 10) || 0);
                 counterObserver.unobserve(entry.target);
             }
         });
@@ -73,33 +129,44 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(c => counterObserver.observe(c));
 
     function animateCounter(el, target) {
+        if (!Number.isFinite(target) || target < 0) return;
         const duration = 2200;
         const start = performance.now();
+        const formatShort = el.dataset.format === 'short';
+        function fmt(n) {
+            if (formatShort && n >= 1000000) return (n / 1000000).toFixed(0);
+            return n.toLocaleString('he-IL');
+        }
         function tick(now) {
             const progress = Math.min((now - start) / duration, 1);
             const ease = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.floor(target * ease).toLocaleString('he-IL');
+            el.textContent = fmt(Math.floor(target * ease));
             if (progress < 1) requestAnimationFrame(tick);
-            else el.textContent = target.toLocaleString('he-IL');
+            else el.textContent = fmt(target);
         }
         requestAnimationFrame(tick);
     }
 
     // === FAQ Accordion ===
     document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.setAttribute('aria-expanded', 'false');
         btn.addEventListener('click', () => {
             const item = btn.closest('.faq-item');
-            const answer = item.querySelector('.faq-answer');
-            const isOpen = item.classList.contains('active');
+            const answer = item?.querySelector('.faq-answer');
+            const isOpen = item?.classList.contains('active');
 
             document.querySelectorAll('.faq-item.active').forEach(openItem => {
                 openItem.classList.remove('active');
-                openItem.querySelector('.faq-answer').style.maxHeight = '0';
+                const ans = openItem.querySelector('.faq-answer');
+                if (ans) ans.style.maxHeight = '0';
+                const q = openItem.querySelector('.faq-question');
+                if (q) q.setAttribute('aria-expanded', 'false');
             });
 
-            if (!isOpen) {
+            if (!isOpen && answer) {
                 item.classList.add('active');
                 answer.style.maxHeight = answer.scrollHeight + 'px';
+                btn.setAttribute('aria-expanded', 'true');
             }
         });
     });
@@ -117,9 +184,21 @@ document.addEventListener('DOMContentLoaded', () => {
             ? CONFIG.FORMSPREE_ID
             : null;
 
+        const consentCheck = document.getElementById('privacyConsent');
+        if (consentCheck && !consentCheck.checked) {
+            btn.innerHTML = originalHTML;
+            btn.disabled = false;
+            return;
+        }
+
         if (formId) {
             try {
                 const formData = new FormData(contactForm);
+                // Sanitize: trim and limit length to prevent abuse
+                ['name', 'phone', 'email', 'branch', 'message'].forEach(field => {
+                    const val = formData.get(field);
+                    if (typeof val === 'string') formData.set(field, val.trim().slice(0, 2000));
+                });
                 const res = await fetch(`https://formspree.io/f/${formId}`, {
                     method: 'POST',
                     body: formData,
@@ -137,9 +216,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
             }
         } else {
-            btn.innerHTML = '<i class="fas fa-check"></i> נשלח!';
-            btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-            contactForm.reset();
+            btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> טופס לא מוגדר';
+            btn.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+            console.warn('Formspree לא מוגדר ב-config.js - הוסף FORMSPREE_ID לקבלת פניות');
         }
         setTimeout(() => {
             btn.innerHTML = originalHTML;

@@ -2,7 +2,8 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>פקאן סוכנות לביטוח בע"מ | עפולה ורחובות - ביטוח מקצועי מאז 2015</title>
     <meta name="description" content="פקאן סוכנות לביטוח - סניפים בעפולה ורחובות. ביטוחי בריאות, רכב, נסיעות, חיים. עובדים עם הראל, מגדל, מנורה, מור, מיטב, אלטשולר. ייעוץ חינם.">
     <meta name="keywords" content="פקאן ביטוח, ביטוח עפולה, ביטוח רחובות, ביטוח רכב, ביטוח בריאות, ביטוח נסיעות">
@@ -18,14 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="config.js"></script>
-    <!-- Google Analytics 4 - הוסף GA_ID ב-config.js -->
-    <script>
-    if (typeof CONFIG !== 'undefined' && CONFIG.GA_ID) {
-        var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id='+CONFIG.GA_ID;document.head.appendChild(s);
-        window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());
-        gtag('config',CONFIG.GA_ID);
-    }
-    </script>
+    <!-- Google Analytics 4 - נטען רק לאחר הסכמת המשתמש לעוגיות -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -44,40 +38,44 @@
     </script>
 </head>
 <body>
+    <!-- Skip to main content - תקן 5568 -->
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
     <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="preloader-inner">
-            <div class="preloader-logo"><i class="fas fa-shield-halved"></i></div>
+            <div class="preloader-logo"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
             <div class="preloader-bar"><div class="preloader-fill"></div></div>
         </div>
     </div>
 
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/972547151450" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/972547151450" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="שלח הודעה ב-WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        <span class="wa-text">שלח הודעה</span>
     </a>
 
     <!-- Top Bar -->
     <div class="top-bar" id="topBar">
         <div class="container">
             <div class="top-bar-content">
-                <a href="tel:0772054425"><i class="fas fa-phone-alt"></i> משרד: 077-2054425</a>
-                <a href="tel:0547151450"><i class="fas fa-mobile-alt"></i> נייד: 054-715-1450</a>
-                <a href="mailto:pekan@pekan-ins.co.il"><i class="fas fa-envelope"></i> pekan@pekan-ins.co.il</a>
+                <a href="tel:0772054425"><i class="fas fa-phone-alt" aria-hidden="true"></i> משרד: 077-2054425</a>
+                <a href="tel:0547151450"><i class="fas fa-mobile-alt" aria-hidden="true"></i> נייד: 054-715-1450</a>
+                <a href="mailto:pekan@pekan-ins.co.il"><i class="fas fa-envelope" aria-hidden="true"></i> pekan@pekan-ins.co.il</a>
             </div>
         </div>
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" role="navigation" aria-label="תפריט ראשי">
         <div class="nav-container">
-            <a href="#" class="logo">
-                <div class="logo-icon"><i class="fas fa-shield-halved"></i></div>
+            <a href="#" class="logo" aria-label="פקאן ביטוח - דף הבית">
+                <div class="logo-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
                 <div class="logo-text">פקאן<span>ביטוח</span></div>
             </a>
-            <button class="nav-toggle" id="navToggle" aria-label="תפריט">
+            <button class="nav-toggle" id="navToggle" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="navMenu">
                 <span></span><span></span><span></span>
             </button>
+            <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#hero">בית</a></li>
                 <li><a href="#about">אודות</a></li>
@@ -86,18 +84,24 @@
                 <li><a href="#partners">חברות ביטוח</a></li>
                 <li><a href="#results">תוצאות והוכחות</a></li>
                 <li><a href="#faq">שאלות</a></li>
+                <li class="nav-mobile-contact">
+                    <a href="tel:0772054425"><i class="fas fa-phone-alt"></i> 077-2054425</a>
+                    <a href="tel:0547151450"><i class="fas fa-mobile-alt"></i> 054-715-1450</a>
+                    <a href="mailto:pekan@pekan-ins.co.il"><i class="fas fa-envelope"></i> pekan@pekan-ins.co.il</a>
+                </li>
                 <li><a href="#contact" class="nav-cta">צור קשר</a></li>
             </ul>
         </div>
     </nav>
 
+    <main id="main-content">
     <!-- Hero -->
-    <section class="hero" id="hero">
+    <section class="hero" id="hero" aria-label="קטע ראשי">
         <div class="hero-bg">
             <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1920&q=80" alt="פקאן ביטוח" class="hero-img" fetchpriority="high">
             <div class="hero-overlay"></div>
         </div>
-        <canvas class="hero-particles" id="heroParticles"></canvas>
+        <canvas class="hero-particles" id="heroParticles" aria-hidden="true"></canvas>
         <div class="hero-content">
             <div class="hero-badges">
                 <div class="hero-badge">סוכנות ביטוח מובילה מאז 2015</div>
@@ -112,10 +116,13 @@
             </h1>
             <p class="hero-desc">סניפים בעפולה ורחובות • עובדים עם כל חברות הביטוח • ייעוץ חינם וללא התחייבות</p>
             <div class="hero-buttons">
+                <div class="hero-cta-wrap">
+                <div class="quote-badge"><i class="fas fa-clock"></i> הצעת מחיר תוך 24 שעות</div>
                 <a href="#contact" class="btn btn-gold btn-shimmer">
                     <span>קבל הצעת מחיר חינם</span>
                     <i class="fas fa-arrow-left"></i>
                 </a>
+            </div>
                 <a href="tel:0547151450" class="btn btn-glass">
                     <i class="fas fa-phone-alt"></i>
                     <span>התקשר עכשיו</span>
@@ -141,6 +148,21 @@
         <div class="hero-scroll-indicator">
             <div class="mouse"><div class="wheel"></div></div>
             <span>גלול למטה</span>
+        </div>
+    </section>
+
+    <!-- Money Returned Banner -->
+    <section class="money-banner">
+        <div class="container">
+            <div class="money-banner-inner">
+                <div class="money-stat">
+                    <span class="money-number" data-target="2000000" data-format="short">0</span>
+                    <span class="money-suffix">M+</span>
+                    <span class="money-currency">ש״ח</span>
+                </div>
+                <p class="money-text">הוחזרו ללקוחותינו בתביעות שאושרו</p>
+                <i class="fas fa-hand-holding-dollar money-icon"></i>
+            </div>
         </div>
     </section>
 
@@ -323,7 +345,7 @@
     <!-- Why Us -->
     <section class="why-section" id="why-us">
         <div class="why-bg">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=60" alt="" class="why-bg-img" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=60" alt="" class="why-bg-img" loading="lazy" role="presentation">
             <div class="why-bg-overlay"></div>
         </div>
         <div class="container">
@@ -359,8 +381,19 @@
                 <h2 class="section-heading">עובדים עם <span class="gold">כל חברות הביטוח</span></h2>
                 <p class="section-sub">אנו עובדים עם כל חברות הביטוח המובילות בישראל ונספק לכם את ההצעה המתאימה והמשתלמת ביותר</p>
             </div>
+            <div class="partners-logos-grid reveal">
+                <div class="partner-logo" style="--brand: #0066b3"><span>הראל</span></div>
+                <div class="partner-logo" style="--brand: #00a651"><span>מגדל</span></div>
+                <div class="partner-logo" style="--brand: #e85d04"><span>מנורה</span></div>
+                <div class="partner-logo" style="--brand: #0077c8"><span>כללית</span></div>
+                <div class="partner-logo" style="--brand: #6b2d7a"><span>הפניקס</span></div>
+                <div class="partner-logo" style="--brand: #1a5276"><span>מור</span></div>
+                <div class="partner-logo" style="--brand: #2874a6"><span>מיטב</span></div>
+                <div class="partner-logo" style="--brand: #1e8449"><span>אלטשולר</span></div>
+                <div class="partner-logo" style="--brand: #d4a843"><span>איילון</span></div>
+                <div class="partner-logo" style="--brand: #2e86ab"><span>דקלה</span></div>
+            </div>
             <div class="companies-marquee">
-                <div class="companies-marquee-inner">
                 <div class="marquee-track">
                     <div class="company-chip">הראל</div>
                     <div class="company-chip">מגדל</div>
@@ -386,7 +419,6 @@
                     <div class="company-chip">דקלה</div>
                     <div class="company-chip">ביטוח ישיר</div>
                     <div class="company-chip">AIG</div>
-                </div>
                 </div>
             </div>
         </div>
@@ -433,7 +465,7 @@
                 <p class="proofs-desc">אישורי תשלום ותגמולים שאושרו ללקוחותינו – חברות ביטוח מובילות</p>
                 <div class="proofs-grid">
                     <div class="proof-card">
-                        <a href="assets/proof-phoenix-siyud.png" target="_blank" rel="noopener" class="proof-link">
+                        <a href="assets/proof-phoenix-siyud.png" target="_blank" rel="noopener noreferrer" class="proof-link">
                             <img src="assets/proof-phoenix-siyud.png" alt="אישור זכאות ביטוח סיעוד – הפניקס" loading="lazy">
                             <div class="proof-overlay">
                                 <span>הפניקס – ביטוח סיעוד</span>
@@ -442,7 +474,7 @@
                         </a>
                     </div>
                     <div class="proof-card">
-                        <a href="assets/proof-critical-illness.png" target="_blank" rel="noopener" class="proof-link">
+                        <a href="assets/proof-critical-illness.png" target="_blank" rel="noopener noreferrer" class="proof-link">
                             <img src="assets/proof-critical-illness.png" alt="אישור תשלום מחלה קשה" loading="lazy">
                             <div class="proof-overlay">
                                 <span>פיצוי מחלה קשה</span>
@@ -451,7 +483,7 @@
                         </a>
                     </div>
                     <div class="proof-card">
-                        <a href="assets/proof-menora.png" target="_blank" rel="noopener" class="proof-link">
+                        <a href="assets/proof-menora.png" target="_blank" rel="noopener noreferrer" class="proof-link">
                             <img src="assets/proof-menora.png" alt="הודעת תשלום מנורה מבטחים" loading="lazy">
                             <div class="proof-overlay">
                                 <span>מנורה מבטחים</span>
@@ -460,7 +492,7 @@
                         </a>
                     </div>
                     <div class="proof-card">
-                        <a href="assets/proof-phoenix-accident.png" target="_blank" rel="noopener" class="proof-link">
+                        <a href="assets/proof-phoenix-accident.png" target="_blank" rel="noopener noreferrer" class="proof-link">
                             <img src="assets/proof-phoenix-accident.png" alt="הודעת תשלום תאונות אישיות – הפניקס" loading="lazy">
                             <div class="proof-overlay">
                                 <span>הפניקס – תאונות אישיות</span>
@@ -586,28 +618,33 @@
                     <form class="premium-form" id="contactForm" action="#" method="POST">
                         <div class="form-row">
                             <div class="form-field">
-                                <input type="text" name="name" id="name" required placeholder=" ">
+                                <input type="text" name="name" id="name" required placeholder=" " maxlength="100" autocomplete="name">
                                 <label for="name">שם מלא</label>
                             </div>
                             <div class="form-field">
-                                <input type="tel" name="phone" id="phone" required placeholder=" ">
+                                <input type="tel" name="phone" id="phone" required placeholder=" " maxlength="20" autocomplete="tel">
                                 <label for="phone">טלפון</label>
                             </div>
                         </div>
                         <div class="form-field">
-                            <input type="email" name="email" id="email" required placeholder=" ">
+                            <input type="email" name="email" id="email" required placeholder=" " maxlength="254" autocomplete="email">
                             <label for="email">אימייל</label>
                         </div>
                         <div class="form-field">
-                            <select name="branch" id="branch" required>
+                            <label for="branch" class="visually-hidden">סניף</label>
+                            <select name="branch" id="branch" required aria-required="true">
                                 <option value="" disabled selected>בחר סניף</option>
                                 <option value="north">סניף צפון - עפולה</option>
                                 <option value="center">סניף מרכז - רחובות</option>
                             </select>
                         </div>
                         <div class="form-field">
-                            <textarea name="message" id="message" rows="4" placeholder=" "></textarea>
+                            <textarea name="message" id="message" rows="4" placeholder=" " maxlength="2000"></textarea>
                             <label for="message">הודעה</label>
+                        </div>
+                        <div class="form-field form-consent">
+                            <input type="checkbox" name="privacy_consent" id="privacyConsent" required aria-required="true" aria-describedby="consent-desc">
+                            <label for="privacyConsent" id="consent-desc">אני מסכים/ה ל<a href="privacy.html" target="_blank" rel="noopener noreferrer">מדיניות הפרטיות</a> ומאשר/ת את איסוף המידע לצורך יצירת קשר והחזרת פנייתי</label>
                         </div>
                         <button type="submit" class="btn btn-gold btn-full">
                             <span>שלח הודעה</span>
@@ -622,7 +659,7 @@
                             <h4>סניף צפון - עפולה</h4>
                         </div>
                         <p class="branch-address">ארלוזורוב 11/ב, עפולה</p>
-                        <a href="https://www.google.com/maps/search/ארלוזורוב+11+עפולה" target="_blank" rel="noopener" class="branch-map"><i class="fas fa-directions"></i> ניווט לסניף</a>
+                        <a href="https://www.google.com/maps/search/ארלוזורוב+11+עפולה" target="_blank" rel="noopener noreferrer" class="branch-map"><i class="fas fa-directions"></i> ניווט לסניף</a>
                         <div class="branch-contact">
                             <a href="tel:0772054425"><i class="fas fa-phone-alt"></i> משרד: 077-2054425</a>
                             <a href="tel:0547151450"><i class="fas fa-mobile-alt"></i> נייד: 054-715-1450</a>
@@ -635,7 +672,7 @@
                             <h4>סניף מרכז - רחובות</h4>
                         </div>
                         <p class="branch-address">פקיעין 2, רחובות</p>
-                        <a href="https://www.google.com/maps/search/פקיעין+2+רחובות" target="_blank" rel="noopener" class="branch-map"><i class="fas fa-directions"></i> ניווט לסניף</a>
+                        <a href="https://www.google.com/maps/search/פקיעין+2+רחובות" target="_blank" rel="noopener noreferrer" class="branch-map"><i class="fas fa-directions"></i> ניווט לסניף</a>
                         <div class="branch-contact">
                             <a href="tel:0772054425"><i class="fas fa-phone-alt"></i> משרד: 077-2054425</a>
                             <a href="tel:0547151450"><i class="fas fa-mobile-alt"></i> נייד: 054-715-1450</a>
@@ -647,12 +684,13 @@
         </div>
     </section>
 
+    </main>
     <!-- Footer -->
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
         <div class="container">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <div class="footer-logo-icon"><i class="fas fa-shield-halved"></i></div>
+                    <div class="footer-logo-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
                     <span>פקאן סוכנות לביטוח בע"מ</span>
                 </div>
                 <div class="footer-links">
@@ -664,9 +702,44 @@
             <div class="footer-bottom">
                 <p>© 2025 פקאן סוכנות לביטוח בע"מ. כל הזכויות שמורות.</p>
                 <p>סניף צפון: ארלוזורוב 11/ב עפולה | סניף מרכז: פקיעין 2 רחובות</p>
+                <p><a href="#a11y-statement" id="a11y-link" class="a11y-footer-link">הצהרת נגישות</a> | <a href="privacy.html" class="a11y-footer-link">מדיניות פרטיות</a></p>
             </div>
         </div>
     </footer>
+
+    <!-- באנר עוגיות - חובה לפי חוק הגנת הפרטיות -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc" hidden>
+        <div class="cookie-banner-inner">
+            <div class="cookie-content">
+                <h3 id="cookie-title" class="cookie-title"><i class="fas fa-cookie-bite" aria-hidden="true"></i> שימוש בעוגיות</h3>
+                <p id="cookie-desc" class="cookie-desc">אנחנו משתמשים בעוגיות כדי לשפר את חוויית הגלישה ולנתח תנועה באתר (Google Analytics). <a href="privacy.html" class="cookie-link">למדיניות הפרטיות והעוגיות</a></p>
+            </div>
+            <div class="cookie-buttons">
+                <button type="button" class="btn btn-gold btn-cookie-accept" id="cookieAccept">אני מסכים</button>
+                <button type="button" class="btn btn-glass btn-cookie-decline" id="cookieDecline">רק הכרחיות</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- הצהרת נגישות - תקן 5568 -->
+    <dialog id="a11y-statement" class="a11y-dialog" aria-labelledby="a11y-title">
+        <div class="a11y-dialog-inner">
+            <h2 id="a11y-title">הצהרת נגישות</h2>
+            <p>פקאן סוכנות לביטוח בע"מ מחויבת להנגשת האתר בהתאם לחוק שוויון זכויות לאנשים עם מוגבלות, התשנ"ח-1998 ולתקן הישראלי 5568 להנגשת אתרים.</p>
+            <p>האתר מותאם לדפדפנים מודרניים ותומך בניווט מקלדת, תוכנות הקראת מסך והגדלת טקסט. במידה ונתקלתם בבעיית נגישות, נשמח לשמוע: <a href="mailto:pekan@pekan-ins.co.il">pekan@pekan-ins.co.il</a> או 077-2054425.</p>
+            <form method="dialog"><button type="submit" class="a11y-close">סגור</button></form>
+        </div>
+    </dialog>
+    <dialog id="privacy-policy" class="a11y-dialog" aria-labelledby="privacy-title">
+        <div class="a11y-dialog-inner">
+            <h2 id="privacy-title">מדיניות פרטיות ועוגיות</h2>
+            <p>פקאן סוכנות לביטוח בע"מ מכבדת את פרטיותך. האתר משתמש בעוגיות לצורכי ניתוח תנועה (Google Analytics) ולשיפור החוויה.</p>
+            <p><a href="privacy.html" target="_blank" rel="noopener noreferrer">למדיניות פרטיות מלאה</a></p>
+            <p>ניתן לבחור "רק הכרחיות" כדי למנוע עוגיות לא חיוניות. <button type="button" class="a11y-link-btn" id="changeCookiePref">שינוי העדפות עוגיות</button></p>
+            <p>לשאלות: <a href="mailto:pekan@pekan-ins.co.il">pekan@pekan-ins.co.il</a></p>
+            <form method="dialog"><button type="submit" class="a11y-close">סגור</button></form>
+        </div>
+    </dialog>
 
     <script src="script.js"></script>
 </body>

@@ -19,6 +19,43 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .live-dot, .hero-particles { animation: none !important; }
+    .btn-shimmer::after { animation: none !important; }
+}
+
+/* === נגישות - תקן 5568 === */
+.skip-link { position: absolute; top: -100px; right: 20px; z-index: 10000; padding: 12px 24px; background: var(--gold); color: var(--dark); font-weight: 700; border-radius: 8px; transition: top 0.3s; }
+.skip-link:focus { top: 20px; outline: 3px solid var(--white); outline-offset: 2px; }
+.visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+.form-field label.visually-hidden { top: 0; right: 0; transform: none; }
+.a11y-footer-link { color: var(--gray); font-size: 0.85rem; text-decoration: underline; }
+.a11y-footer-link:hover { color: var(--gold); }
+.a11y-dialog { max-width: 560px; padding: 32px; border-radius: var(--radius); border: 1px solid var(--glass-border); }
+.a11y-dialog::backdrop { background: rgba(0,0,0,0.6); }
+.a11y-dialog h2 { margin-bottom: 16px; color: var(--white); }
+.a11y-dialog p { margin-bottom: 16px; color: var(--text); }
+.a11y-close { margin-top: 16px; padding: 12px 24px; background: var(--gold); color: var(--dark); border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+.a11y-close:hover { background: var(--gold-light); }
+.a11y-link-btn { background: none; border: none; color: var(--gold); text-decoration: underline; cursor: pointer; font-size: inherit; font-family: inherit; padding: 0; }
+.a11y-link-btn:hover { color: var(--gold-light); }
+
+/* === באנר עוגיות === */
+.cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; z-index: 9998; background: var(--dark-2); border-top: 1px solid var(--glass-border); padding: 20px 24px; box-shadow: 0 -8px 32px rgba(0,0,0,0.3); }
+.cookie-banner[hidden] { display: none !important; }
+.cookie-banner-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.cookie-content { flex: 1; min-width: 280px; }
+.cookie-title { font-size: 1.1rem; color: var(--white); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.cookie-title i { color: var(--gold); }
+.cookie-desc { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+.cookie-link { color: var(--gold); text-decoration: underline; }
+.cookie-link:hover { color: var(--gold-light); }
+.cookie-buttons { display: flex; gap: 12px; flex-shrink: 0; }
+.btn-cookie-accept, .btn-cookie-decline { padding: 12px 24px; font-size: 0.95rem; }
+@media (max-width: 600px) { .cookie-banner-inner { flex-direction: column; align-items: stretch; } .cookie-buttons { justify-content: center; } }
+/* Focus visible - ניווט מקלדת */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 body { font-family: 'Heebo', sans-serif; background: var(--dark); color: var(--text); line-height: 1.7; overflow-x: hidden; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 img { max-width: 100%; display: block; }
@@ -36,8 +73,11 @@ a { text-decoration: none; }
 @keyframes pulse-glow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.1); } }
 
 /* === WhatsApp Float === */
-.whatsapp-float { position: fixed; bottom: 28px; left: 28px; z-index: 999; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.75rem; box-shadow: 0 8px 24px rgba(37,211,102,0.4); transition: all 0.3s var(--ease); animation: wa-pulse 2s infinite; }
-.whatsapp-float:hover { transform: scale(1.1); }
+.whatsapp-float { position: fixed; bottom: 28px; left: 28px; z-index: 999; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; gap: 10px; color: white; font-size: 1.75rem; box-shadow: 0 8px 24px rgba(37,211,102,0.4); transition: all 0.4s var(--ease); animation: wa-pulse 2s infinite; }
+.whatsapp-float .wa-text { white-space: nowrap; font-size: 0.95rem; font-weight: 700; font-family: inherit; opacity: 0; max-width: 0; overflow: hidden; transition: all 0.35s var(--ease); }
+.whatsapp-float:hover { width: auto; padding: 0 22px; border-radius: 50px; transform: scale(1.05); }
+.whatsapp-float:hover .wa-text { opacity: 1; max-width: 120px; }
+
 @keyframes wa-pulse { 0%, 100% { box-shadow: 0 8px 24px rgba(37,211,102,0.4); } 50% { box-shadow: 0 8px 40px rgba(37,211,102,0.6); } }
 
 /* === Top Bar === */
@@ -63,6 +103,7 @@ a { text-decoration: none; }
 .nav-cta { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--dark) !important; padding: 10px 24px; border-radius: 50px; font-weight: 600; }
 .nav-cta::after { display: none !important; }
 .nav-cta:hover { color: var(--dark) !important; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,168,67,0.3); }
+.nav-mobile-contact { display: none; }
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
 .nav-toggle span { width: 24px; height: 2px; background: var(--white); transition: all 0.3s; }
 
@@ -92,6 +133,23 @@ a { text-decoration: none; }
 .btn-shimmer { position: relative; overflow: hidden; }
 .btn-shimmer::after { content: ''; position: absolute; top: 0; right: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent); animation: shimmer 3s ease-in-out infinite; }
 @keyframes shimmer { 0% { right: -100%; } 50% { right: 150%; } 100% { right: 150%; } }
+
+/* Money Returned Banner */
+.money-banner { background: linear-gradient(135deg, rgba(212,168,67,0.15), rgba(212,168,67,0.05)); border-top: 1px solid rgba(212,168,67,0.2); border-bottom: 1px solid rgba(212,168,67,0.2); padding: 28px 0; }
+.money-banner-inner { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; position: relative; }
+.money-stat { display: flex; align-items: baseline; gap: 4px; }
+.money-number { font-size: 2.5rem; font-weight: 900; color: var(--gold); line-height: 1; }
+.money-suffix { font-size: 1.8rem; font-weight: 800; color: var(--gold); }
+.money-currency { font-size: 1.2rem; font-weight: 700; color: var(--gold-light); margin-right: 8px; }
+.money-text { font-size: 1.1rem; color: var(--text); font-weight: 500; }
+.money-icon { font-size: 1.8rem; color: var(--gold); opacity: 0.6; }
+
+/* Hero CTA + 24h badge */
+.hero-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.quote-badge { font-size: 0.8rem; font-weight: 600; color: var(--gold-light); display: flex; align-items: center; gap: 6px; }
+.quote-badge i { font-size: 0.75rem; }
+.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; animation: fadeUp 0.8s ease 0.5s both; }
+.hero-buttons .hero-cta-wrap { flex: 0 0 auto; }
 
 /* Results Ticker */
 .results-ticker { background: linear-gradient(90deg, var(--dark-2), var(--dark-3)); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 16px 0; position: relative; overflow: hidden; }
@@ -243,6 +301,11 @@ a { text-decoration: none; }
 
 /* === Partners === */
 .partners-section { padding: 100px 0; }
+.partners-logos-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 40px; }
+.partner-logo { aspect-ratio: 2/1; background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; color: var(--white); transition: all 0.4s var(--ease); position: relative; overflow: hidden; }
+.partner-logo::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--brand, var(--gold)), transparent); opacity: 0.15; }
+.partner-logo:hover { transform: translateY(-4px); border-color: var(--brand, var(--gold)); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+.partner-logo span { position: relative; z-index: 1; }
 .companies-marquee { overflow: hidden; padding: 20px 0; margin: 0 -24px; }
 .companies-marquee-inner { overflow: hidden; }
 .marquee-track { display: flex; gap: 16px; animation: marquee 40s linear infinite; width: max-content; flex-shrink: 0; }
@@ -297,10 +360,18 @@ a { text-decoration: none; }
 .form-field textarea ~ label { top: 18px; transform: none; }
 .form-field input:focus, .form-field textarea:focus, .form-field select:focus { outline: none; border-color: var(--gold); }
 .form-field input:not(:placeholder-shown) ~ label, .form-field input:focus ~ label,
-.form-field textarea:not(:placeholder-shown) ~ label, .form-field textarea:focus ~ label {
+.form-field textarea:not(:placeholder-shown) ~ label, .form-field textarea:focus ~ label,
+.form-field select:valid ~ label, .form-field select:focus ~ label {
     top: -8px; font-size: 0.75rem; color: var(--gold); background: var(--dark-2); padding: 0 6px;
 }
 .form-field select { appearance: none; cursor: pointer; }
+
+/* צ'קבוקס הסכמה - תיקון 13 לחוק הגנת הפרטיות */
+.form-consent { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px; }
+.form-consent input[type="checkbox"] { width: auto; min-width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--gold); cursor: pointer; flex-shrink: 0; }
+.form-consent label { position: static !important; transform: none !important; font-size: 0.9rem; color: var(--text); pointer-events: auto; line-height: 1.5; }
+.form-consent label a { color: var(--gold); text-decoration: underline; }
+.form-consent label a:hover { color: var(--gold-light); }
 
 /* Branch Cards */
 .branch-card { background: var(--dark-3); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 28px; margin-bottom: 24px; transition: border-color 0.3s; }
@@ -337,6 +408,7 @@ a { text-decoration: none; }
 /* === Responsive === */
 @media (max-width: 1024px) {
     .cards-grid, .why-grid, .reviews-grid { grid-template-columns: 1fr; }
+    .partners-logos-grid { grid-template-columns: repeat(3, 1fr); }
     .about-layout, .contact-layout { grid-template-columns: 1fr; }
     .services-mosaic { grid-template-columns: repeat(2, 1fr); }
     .trust-grid { grid-template-columns: repeat(2, 1fr); }
@@ -345,10 +417,23 @@ a { text-decoration: none; }
 }
 
 @media (max-width: 768px) {
+    /* Top bar - הסתרה במובייל כדי למנוע חפיפה, פרטי קשר ב-footer ובתפריט */
+    .top-bar { display: none; }
+    .navbar { top: 0; }
+    .container { padding: 0 20px; }
     .ticker-badge { display: none; }
     .hero-badges { flex-direction: column; }
-    .nav-menu { position: fixed; top: 0; right: -100%; width: 80%; max-width: 300px; height: 100vh; background: var(--dark); flex-direction: column; padding: 100px 32px 32px; gap: 20px; transition: right 0.4s var(--ease); box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
+    .money-banner-inner { flex-direction: column; gap: 12px; }
+    .money-number { font-size: 2rem; }
+    .partners-logos-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999; opacity: 0; transition: opacity 0.4s var(--ease); pointer-events: none; }
+    .nav-overlay.active { display: block; opacity: 1; pointer-events: auto; }
+    .nav-menu { position: fixed; top: 0; right: -100%; width: 85%; max-width: 320px; height: 100vh; background: var(--dark); flex-direction: column; padding: 100px 24px 32px; gap: 20px; transition: right 0.4s var(--ease); box-shadow: -10px 0 30px rgba(0,0,0,0.5); overflow-y: auto; z-index: 1000; }
     .nav-menu.active { right: 0; }
+    .nav-mobile-contact { display: flex !important; flex-direction: column; gap: 12px; padding: 16px 0; border-top: 1px solid var(--glass-border); margin-top: 8px; }
+    .nav-mobile-contact a { color: var(--gray) !important; font-size: 0.95rem; display: flex !important; align-items: center; gap: 10px; padding: 8px 0; }
+    .nav-mobile-contact a i { color: var(--gold); font-size: 0.9rem; }
+    .nav-mobile-contact a:hover { color: var(--gold) !important; }
     .nav-toggle { display: flex; }
     .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .nav-toggle.active span:nth-child(2) { opacity: 0; }
@@ -363,5 +448,35 @@ a { text-decoration: none; }
     .about-experience-badge { top: auto; bottom: -20px; left: 20px; }
     .premium-form .form-row { grid-template-columns: 1fr; }
     .cta-box { padding: 40px 24px; }
-    .top-bar-content { flex-direction: column; gap: 8px; }
+    /* Hero - הפחתת padding כדי שהתוכן ייכנס במסך */
+    .hero { padding: 120px 20px 80px; min-height: auto; }
+    .hero-title { font-size: clamp(2rem, 8vw, 2.8rem); margin-bottom: 16px; }
+    .hero-desc { font-size: 1rem; margin-bottom: 28px; }
+    .hero-buttons { margin-bottom: 40px; gap: 12px; }
+    .hero-stats { margin-bottom: 0; }
+    .hero-scroll-indicator { bottom: 24px; }
+    /* WhatsApp - safe area למכשירים עם notch */
+    .whatsapp-float { bottom: max(20px, env(safe-area-inset-bottom)); left: max(20px, env(safe-area-inset-left)); }
+    /* סקציות - הפחתת padding */
+    .cards-section, .about-section, .services-section, .results-section, .reviews-section, .faq-section, .contact-section { padding: 60px 0; }
+    .partners-section { padding: 60px 0; }
+    .section-intro { margin-bottom: 40px; }
+    .section-heading { font-size: clamp(1.6rem, 5vw, 2rem); }
+    .cta-section { padding: 50px 0; }
+    .cta-box h2 { font-size: 1.6rem; }
+}
+
+/* מובייל קטן מאוד - עד 480px */
+@media (max-width: 480px) {
+    .container { padding: 0 16px; }
+    .hero { padding: 100px 16px 60px; }
+    .hero-badges { gap: 8px; margin-bottom: 20px; }
+    .hero-badge, .hero-live-badge { font-size: 0.8rem; padding: 6px 16px; }
+    .logo-text { font-size: 1.2rem; }
+    .logo-icon { width: 38px; height: 38px; font-size: 1.1rem; }
+    .money-banner-inner { flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .money-number { font-size: 1.8rem; }
+    .proofs-grid { gap: 16px; }
+    .branch-contact { flex-direction: column; }
+    .footer-top { flex-direction: column; align-items: flex-start; }
 }
