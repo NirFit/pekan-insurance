@@ -159,19 +159,18 @@ a { text-decoration: none; }
 .money-text { font-size: 1.1rem; color: var(--text); font-weight: 500; }
 .money-icon { font-size: 1.8rem; color: var(--silver); opacity: 0.6; }
 
-/* Hero CTA + 24h badge */
-.hero-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.quote-badge { font-size: 0.85rem; font-weight: 600; color: var(--silver-light); display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(192,192,192,0.12); border: 1px solid rgba(192,192,192,0.25); border-radius: 50px; }
-.quote-badge i { font-size: 0.8rem; color: var(--silver); }
-.hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; animation: fadeUp 0.8s ease 0.5s both; align-items: flex-start; }
-.hero-buttons .hero-cta-wrap { flex: 0 0 auto; }
+/* Hero CTA - כפתור הצעת מחיר והתקשר באותו שורה, קבל הצעת מחיר חינם באותו רוחב למטה */
+.hero-buttons { display: flex; justify-content: center; margin-bottom: 60px; animation: fadeUp 0.8s ease 0.5s both; }
+.hero-buttons-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 12px; max-width: 420px; }
+.hero-buttons-grid .btn-quote { grid-column: 1; grid-row: 1; justify-content: center; }
+.hero-buttons-grid .btn-call { grid-column: 2; grid-row: 1; justify-content: center; }
+.hero-buttons-grid .btn-free-quote { grid-column: 1; grid-row: 2; justify-content: center; }
 
 .hero-title { font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px; }
 .hero-title .line { display: block; color: var(--white); animation: fadeUp 0.8s ease both; }
 .hero-title .line:nth-child(1) { animation-delay: 0.1s; }
 .hero-title .line.accent { color: var(--silver); animation-delay: 0.25s; }
 .hero-desc { font-size: 1.15rem; color: rgba(255,255,255,0.8); margin-bottom: 40px; animation: fadeUp 0.8s ease 0.35s both; }
-.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; animation: fadeUp 0.8s ease 0.5s both; }
 .hero-stats { display: flex; align-items: center; justify-content: center; gap: 40px; animation: fadeUp 0.8s ease 0.65s both; }
 .hero-stat { text-align: center; }
 .hero-stat strong { display: block; font-size: 2rem; font-weight: 800; color: var(--silver); }
@@ -456,7 +455,7 @@ a { text-decoration: none; }
     .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
     .services-mosaic { grid-template-columns: 1fr; }
     .trust-grid { grid-template-columns: 1fr; }
-    .hero-buttons { flex-direction: column; }
+    .hero-buttons-grid { max-width: 100%; }
     .btn { width: 100%; justify-content: center; }
     .hero-stats { flex-direction: column; gap: 16px; }
     .hero-stat-divider { width: 40px; height: 1px; }
@@ -469,7 +468,7 @@ a { text-decoration: none; }
     .hero { padding: 120px 20px 80px; min-height: auto; }
     .hero-title { font-size: clamp(2rem, 8vw, 2.8rem); margin-bottom: 16px; }
     .hero-desc { font-size: 1rem; margin-bottom: 28px; }
-    .hero-buttons { margin-bottom: 40px; gap: 12px; }
+    .hero-buttons { margin-bottom: 40px; }
     .hero-stats { margin-bottom: 0; }
     .hero-scroll-indicator { bottom: 24px; }
     /* WhatsApp - safe area למכשירים עם notch */
