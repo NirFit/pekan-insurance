@@ -80,6 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.nav-menu a').forEach(link => {
         link.addEventListener('click', () => closeNav());
     });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu?.classList.contains('active')) closeNav();
+    });
 
     // === כפתור נגישות ===
     document.getElementById('a11yFloat')?.addEventListener('click', () => {
@@ -139,33 +142,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Reviews Carousel ===
     const reviewsTrack = document.getElementById('reviewsTrack');
-    const reviewsPrev = document.getElementById('reviewsPrev');
-    const reviewsNext = document.getElementById('reviewsNext');
-    const reviewsDots = document.getElementById('reviewsDots');
-    if (reviewsTrack && reviewsDots) {
+    if (reviewsTrack) {
         const cards = reviewsTrack.querySelectorAll('.review-card');
         const total = cards.length;
         let currentIndex = 0;
-
-        for (let i = 0; i < total; i++) {
-            const dot = document.createElement('button');
-            dot.type = 'button';
-            dot.className = 'dot' + (i === 0 ? ' active' : '');
-            dot.setAttribute('aria-label', 'ביקורת ' + (i + 1));
-            dot.addEventListener('click', () => goTo(i));
-            reviewsDots.appendChild(dot);
-        }
-        const dots = reviewsDots.querySelectorAll('.dot');
 
         function goTo(index) {
             currentIndex = (index + total) % total;
             const offset = (window.innerWidth >= 900) ? 0 : -currentIndex * 100;
             reviewsTrack.style.transform = 'translateX(' + offset + '%)';
-            dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
         }
-
-        reviewsPrev?.addEventListener('click', () => goTo(currentIndex - 1));
-        reviewsNext?.addEventListener('click', () => goTo(currentIndex + 1));
 
         let autoInterval = setInterval(() => goTo(currentIndex + 1), 5000);
         reviewsTrack.closest('.reviews-carousel-wrap')?.addEventListener('mouseenter', () => clearInterval(autoInterval));
@@ -204,16 +190,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const duration = 2200;
         const start = performance.now();
         const formatShort = el.dataset.format === 'short';
-        function fmt(n) {
-            if (formatShort && n >= 1000000) return (n / 1000000).toFixed(0);
-            return n.toLocaleString('he-IL');
+        const suffix = el.dataset.suffix || '';
+        function fmt(n, addSuffix) {
+            let s = formatShort && n >= 1000000 ? (n / 1000000).toFixed(0) : n.toLocaleString('he-IL');
+            return s + (addSuffix ? suffix : '');
         }
         function tick(now) {
             const progress = Math.min((now - start) / duration, 1);
             const ease = 1 - Math.pow(1 - progress, 3);
-            el.textContent = fmt(Math.floor(target * ease));
+            const current = Math.floor(target * ease);
+            el.textContent = fmt(current, progress >= 1);
             if (progress < 1) requestAnimationFrame(tick);
-            else el.textContent = fmt(target);
+            else el.textContent = fmt(target, true);
         }
         requestAnimationFrame(tick);
     }
@@ -248,6 +236,24 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const btn = contactForm.querySelector('button[type="submit"]');
         const originalHTML = btn.innerHTML;
+
+        const consentCheck = document.getElementById('privacyConsent');
+        if (consentCheck && !consentCheck.checked) {
+            consentCheck.focus();
+            consentCheck.closest('.form-consent')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+        }
+
+        const emailInput = contactForm.querySelector('#email');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailInput && !emailRegex.test(emailInput.value.trim())) {
+            emailInput.setCustomValidity('נא להזין כתובת אימייל תקינה');
+            emailInput.reportValidity();
+            emailInput.setCustomValidity('');
+            emailInput.focus();
+            return;
+        }
+
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> שולח...';
         btn.disabled = true;
 
@@ -255,20 +261,22 @@ document.addEventListener('DOMContentLoaded', () => {
             ? CONFIG.FORMSPREE_ID
             : null;
 
-        const consentCheck = document.getElementById('privacyConsent');
-        if (consentCheck && !consentCheck.checked) {
-            btn.innerHTML = originalHTML;
-            btn.disabled = false;
-            return;
-        }
-
         if (formId) {
             try {
                 const formData = new FormData(contactForm);
-                // Sanitize: trim and limit length to prevent abuse
+                // Sanitize: trim, limit length, strip HTML/script to prevent XSS
+                const sanitize = (str) => {
+                    if (typeof str !== 'string') return '';
+                    return str
+                        .trim()
+                        .replace(/<[^>]*>/g, '')
+                        .replace(/javascript:/gi, '')
+                        .replace(/on\w+=/gi, '')
+                        .slice(0, 2000);
+                };
                 ['name', 'phone', 'email', 'branch', 'message'].forEach(field => {
                     const val = formData.get(field);
-                    if (typeof val === 'string') formData.set(field, val.trim().slice(0, 2000));
+                    formData.set(field, sanitize(String(val || '')));
                 });
                 const res = await fetch(`https://formspree.io/f/${formId}`, {
                     method: 'POST',

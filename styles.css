@@ -133,7 +133,10 @@ a { text-decoration: none; }
 .navbar { position: fixed; top: 40px; right: 0; left: 0; z-index: 1000; padding: 16px 0; transition: all 0.4s var(--ease); }
 .navbar.scrolled { top: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 12px 0; }
 .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
-.logo { display: flex; align-items: center; gap: 12px; margin-inline-end: -48px; }
+@media (min-width: 769px) {
+    .nav-container { justify-content: center; gap: 16px; }
+}
+.logo { display: flex; align-items: center; gap: 12px; }
 .logo-img { height: 58px; width: auto; object-fit: contain; display: block; }
 .logo-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--silver), var(--silver-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--dark); font-size: 1.25rem; }
 .logo-text { font-size: 1.4rem; font-weight: 700; color: var(--white); }
@@ -178,9 +181,11 @@ a { text-decoration: none; }
 @keyframes shimmer { 0% { right: -100%; } 50% { right: 150%; } 100% { right: 150%; } }
 
 /* Money Returned Banner */
-.money-banner { background: linear-gradient(135deg, rgba(192,192,192,0.15), rgba(192,192,192,0.05)); border-top: 1px solid rgba(192,192,192,0.2); border-bottom: 1px solid rgba(192,192,192,0.2); padding: 28px 0; }
+.money-banner { background: linear-gradient(135deg, rgba(192,192,192,0.15), rgba(192,192,192,0.05)); border-top: 1px solid rgba(192,192,192,0.2); border-bottom: 1px solid rgba(192,192,192,0.2); padding: 28px 0; text-align: center; }
+.money-banner-title { font-size: 1.1rem; font-weight: 600; color: var(--silver); margin: 0 0 4px; }
+.money-banner-subtitle { font-size: 0.95rem; color: var(--gray); margin: 0 0 16px; }
 .money-banner-inner { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; position: relative; }
-.money-stat { display: flex; align-items: baseline; gap: 4px; }
+.money-stat { display: flex; align-items: baseline; gap: 4px; direction: rtl; }
 .money-number { font-size: 2.5rem; font-weight: 900; color: var(--silver); line-height: 1; }
 .money-suffix { font-size: 1.8rem; font-weight: 800; color: var(--silver); }
 .money-currency { font-size: 1.2rem; font-weight: 700; color: var(--silver-light); margin-right: 8px; }
@@ -342,7 +347,6 @@ a { text-decoration: none; }
 .partner-logo-item { width: 140px; height: 80px; flex-shrink: 0; background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; padding: 12px 20px; transition: all 0.3s; }
 .partner-logo-item:hover { border-color: var(--silver); box-shadow: 0 8px 24px rgba(192,192,192,0.15); }
 .partner-logo-item img { max-width: 100%; max-height: 100%; object-fit: contain; }
-.partner-logo-item .logo-fallback { display: none; font-weight: 700; font-size: 0.8rem; color: var(--white); text-align: center; line-height: 1.2; padding: 0 8px; }
 /* נכנס משמאל יוצא מימין */
 @keyframes partners-carousel {
     0% { transform: translateX(0); }
@@ -351,24 +355,14 @@ a { text-decoration: none; }
 
 /* === Reviews - קרוסלה === */
 .reviews-section { padding: 120px 0; background: var(--dark-2); }
-.reviews-carousel-wrap { position: relative; max-width: 480px; margin: 0 auto; padding: 0 48px; }
+.reviews-carousel-wrap { position: relative; max-width: 480px; margin: 0 auto; }
 .reviews-carousel-mask { overflow: hidden; }
 .reviews-carousel-track { display: flex; transition: transform 0.5s var(--ease); direction: ltr; }
 .reviews-carousel-track .review-card { flex: 0 0 100%; min-width: 100%; padding: 36px 24px; }
-.reviews-carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: var(--dark-3); border: 1px solid var(--glass-border); color: var(--silver); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; z-index: 2; }
-.reviews-carousel-btn:hover { background: rgba(192,192,192,0.15); border-color: var(--silver); color: var(--white); }
-.reviews-carousel-prev { right: 0; }
-.reviews-carousel-next { left: 0; }
-.reviews-carousel-dots { display: flex; justify-content: center; gap: 10px; margin-top: 24px; }
-.reviews-carousel-dots .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--dark-3); border: 1px solid var(--glass-border); cursor: pointer; transition: all 0.3s; }
-.reviews-carousel-dots .dot:hover { border-color: var(--silver); }
-.reviews-carousel-dots .dot.active { background: var(--silver); border-color: var(--silver); }
 @media (min-width: 900px) {
-    .reviews-carousel-wrap { max-width: 100%; padding: 0 56px; }
+    .reviews-carousel-wrap { max-width: 100%; }
     .reviews-carousel-track .review-card { flex: 0 0 calc((100% - 56px) / 3); min-width: calc((100% - 56px) / 3); }
     .reviews-carousel-track { gap: 28px; }
-    .reviews-carousel-btn { display: none; }
-    .reviews-carousel-dots { display: none; }
 }
 .review-card { background: var(--dark-3); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 36px; position: relative; transition: all 0.4s var(--ease); direction: rtl; }
 .review-card:hover { border-color: var(--silver); transform: translateY(-6px); }
@@ -403,8 +397,8 @@ a { text-decoration: none; }
 .contact-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: start; }
 .contact-form-card { background: var(--dark-3); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 40px; box-shadow: 0 16px 48px rgba(0,0,0,0.2); }
 .contact-form-desc { color: var(--gray); margin-bottom: 28px; line-height: 1.7; font-size: 1rem; }
-.about-text { min-width: 0; }
-.about-text p { overflow-wrap: break-word; word-wrap: break-word; }
+.about-text { min-width: 0; overflow: visible; }
+.about-text p { overflow-wrap: break-word; word-wrap: break-word; overflow: visible; }
 .contact-form-side .section-tag { margin-bottom: 8px; }
 .contact-form-side .section-heading { margin-bottom: 12px; }
 .form-group { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--glass-border); }
@@ -531,7 +525,6 @@ a { text-decoration: none; }
 /* מובייל קטן מאוד - עד 480px */
 @media (max-width: 480px) {
     .container { padding: 0 16px; }
-    .reviews-carousel-wrap { padding: 0 40px; }
     .hero { padding: 100px 16px 60px; }
     .hero-badges { gap: 8px; margin-bottom: 20px; }
     .hero-badge, .hero-live-badge { font-size: 0.8rem; padding: 6px 16px; }
