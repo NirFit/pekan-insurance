@@ -341,12 +341,17 @@ a { text-decoration: none; }
 .partner-logo-item { width: 140px; height: 80px; flex-shrink: 0; background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; padding: 12px 20px; transition: all 0.3s; }
 .partner-logo-item:hover { border-color: var(--silver); box-shadow: 0 8px 24px rgba(192,192,192,0.15); }
 .partner-logo-item img { max-width: 100%; max-height: 100%; object-fit: contain; }
-/* Hide carousel arrow buttons (עיגול אפור וחץ ימינה) - keep only logos */
-.reviews-carousel-btn, .reviews-carousel-prev, .reviews-carousel-next, .reviews-carousel-dots { display: none !important; }
-.partners-carousel-track > *:not(.partner-logo-item) { display: none !important; }
+/* Hide carousel arrow buttons (עיגול אפור וחץ ימינה) - כפתורי הבא/הקודם */
+.reviews-carousel-btn, .reviews-carousel-prev, .reviews-carousel-next, .reviews-carousel-dots,
+.reviews-carousel-wrap > button,
+.reviews-section button[aria-label*="קודמת"], .reviews-section button[aria-label*="הבאה"],
+#reviewsPrev, #reviewsNext, #reviewsDots { display: none !important; visibility: hidden !important; width: 0 !important; height: 0 !important; min-width: 0 !important; min-height: 0 !important; padding: 0 !important; margin: 0 !important; overflow: hidden !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; left: -9999px !important; }
+.partners-carousel-wrap button,
+.partners-carousel-wrap [role="button"],
+.partners-carousel-track > *:not(.partner-logo-item),
 .partners-carousel-track > *:has(.fa-chevron-right, .fa-chevron-left, .fa-angle-right, .fa-angle-left),
 .partners-carousel-track > *:has(button),
-.partners-carousel-track button { display: none !important; visibility: hidden !important; }
+.partners-carousel-track button { display: none !important; visibility: hidden !important; width: 0 !important; height: 0 !important; overflow: hidden !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; left: -9999px !important; }
 /* נכנס משמאל יוצא מימין */
 @keyframes partners-carousel {
     0% { transform: translateX(0); }

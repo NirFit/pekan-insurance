@@ -140,36 +140,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // === Partners - hide items without image, remove arrow buttons (עיגול אפור וחץ ימינה) ===
+    // === Partners - הסתרת כפתור הבא, הסרת פריטים ללא תמונה ===
+    function removeCarouselButtons() {
+        const sel = '.reviews-carousel-btn, .reviews-carousel-prev, .reviews-carousel-next, .reviews-carousel-dots, #reviewsPrev, #reviewsNext, #reviewsDots, .reviews-carousel-wrap > button';
+        document.querySelectorAll(sel).forEach(el => el.remove());
+    }
     function cleanPartnersCarousel() {
+        const wrap = document.querySelector('.partners-carousel-wrap');
         const track = document.querySelector('.partners-carousel-track');
         if (!track) return;
-        track.querySelectorAll('.partner-logo-item').forEach(item => {
-            const img = item.querySelector('img');
-            if (!img) {
-                item.remove();
-                return;
-            }
-            img.addEventListener('error', () => item.remove());
-        });
-        // Remove any element that has no img (arrow buttons, placeholders)
+        wrap?.querySelectorAll('button, [role="button"]').forEach(el => el.remove());
         track.querySelectorAll(':scope > *').forEach(el => {
-            if (!el.querySelector('img') || el.querySelector('i[class*="chevron"], i[class*="angle"]')) {
+            if (!el.classList.contains('partner-logo-item') || el.querySelector('i[class*="chevron"], i[class*="angle"]') || !el.querySelector('img')) {
                 el.remove();
             }
         });
-        document.querySelectorAll('.reviews-carousel-btn, .reviews-carousel-prev, .reviews-carousel-next, .reviews-carousel-dots').forEach(el => el.remove());
+        track.querySelectorAll('.partner-logo-item').forEach(item => {
+            const img = item.querySelector('img');
+            if (!img) item.remove();
+            else img.addEventListener('error', () => item.remove());
+        });
+        removeCarouselButtons();
     }
+    removeCarouselButtons();
     cleanPartnersCarousel();
-    // Also run after images load - remove items where image failed (naturalWidth=0)
     window.addEventListener('load', () => {
+        removeCarouselButtons();
+        cleanPartnersCarousel();
         document.querySelectorAll('.partners-carousel-track .partner-logo-item').forEach(item => {
             const img = item.querySelector('img');
-            if (img && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
-                item.remove();
-            }
+            if (img && (img.naturalWidth === 0 || img.naturalHeight === 0)) item.remove();
         });
     });
+    // MutationObserver - מחכה לכפתורים שנוספים דינמית
+    const reviewsWrap = document.querySelector('.reviews-carousel-wrap');
+    if (reviewsWrap) {
+        const obs = new MutationObserver(() => removeCarouselButtons());
+        obs.observe(reviewsWrap, { childList: true, subtree: true });
+    }
 
     // === Reviews Carousel ===
     const reviewsTrack = document.getElementById('reviewsTrack');
