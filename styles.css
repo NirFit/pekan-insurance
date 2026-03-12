@@ -71,14 +71,16 @@ a { text-decoration: none; }
 .preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .preloader-inner { text-align: center; }
 .preloader-logo { margin-bottom: 24px; animation: pulse-glow 1.5s infinite; }
-.preloader-logo img { max-width: 200px; height: auto; display: block; margin: 0 auto; }
-.preloader-bar { width: 200px; height: 3px; background: var(--dark-3); border-radius: 4px; overflow: hidden; }
+.preloader-logo img { max-width: 360px; width: 320px; height: auto; display: block; margin: 0 auto; }
+.preloader-bar { width: 320px; height: 4px; background: var(--dark-3); border-radius: 4px; overflow: hidden; }
 .preloader-fill { height: 100%; background: var(--silver); border-radius: 4px; animation: preload-fill 1.8s ease forwards; }
 @keyframes preload-fill { from { width: 0; } to { width: 100%; } }
 @keyframes pulse-glow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.1); } }
 
 /* === כפתור נגישות - תקן 5568 === */
 .a11y-float { position: fixed; bottom: 100px; left: 20px; z-index: 998; width: 52px; height: 52px; background: var(--dark-3); border: 1px solid var(--glass-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--silver); font-size: 1.4rem; cursor: pointer; transition: all 0.35s var(--ease); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+.a11y-float:not(:hover) { gap: 0; }
+.a11y-float i { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .a11y-float:hover { width: auto; padding: 0 22px; border-radius: 50px; background: rgba(192,192,192,0.15); border-color: var(--silver); transform: scale(1.05); box-shadow: 0 8px 28px rgba(192,192,192,0.25); }
 .a11y-float:hover .a11y-float-text { opacity: 1; max-width: 80px; }
 .a11y-float .a11y-float-text { white-space: nowrap; font-size: 0.9rem; font-weight: 600; font-family: inherit; opacity: 0; max-width: 0; overflow: hidden; transition: all 0.35s var(--ease); }
@@ -87,12 +89,38 @@ a { text-decoration: none; }
 
 /* === WhatsApp Float === */
 .whatsapp-float { position: fixed; bottom: 28px; left: 20px; z-index: 999; width: 60px; height: 60px; background: var(--silver-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--white); font-size: 1.75rem; box-shadow: 0 8px 24px rgba(192,192,192,0.3); transition: all 0.4s var(--ease); animation: wa-pulse 2s infinite; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
-.whatsapp-float i { filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
+.whatsapp-float:not(:hover) { gap: 0; }
+.whatsapp-float i { display: flex; align-items: center; justify-content: center; flex-shrink: 0; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
 .whatsapp-float .wa-text { white-space: nowrap; font-size: 0.95rem; font-weight: 700; font-family: inherit; opacity: 0; max-width: 0; overflow: hidden; transition: all 0.35s var(--ease); }
 .whatsapp-float:hover { width: auto; padding: 0 22px; border-radius: 50px; transform: scale(1.05); }
 .whatsapp-float:hover .wa-text { opacity: 1; max-width: 120px; }
 
 @keyframes wa-pulse { 0%, 100% { box-shadow: 0 8px 24px rgba(192,192,192,0.3); } 50% { box-shadow: 0 8px 40px rgba(192,192,192,0.5); } }
+
+/* === Chat Bot Widget - צד ימין למטה === */
+.chatbot-widget { position: fixed; bottom: 28px; right: 20px; z-index: 999; font-family: inherit; }
+.chatbot-trigger { width: 60px; height: 60px; background: linear-gradient(135deg, var(--silver), var(--silver-dark)); color: var(--dark); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 8px 24px rgba(192,192,192,0.35); transition: all 0.4s var(--ease); }
+.chatbot-trigger:hover { transform: scale(1.05); box-shadow: 0 10px 32px rgba(192,192,192,0.45); }
+.chatbot-trigger .chatbot-trigger-text { display: none; white-space: nowrap; font-size: 0.95rem; font-weight: 700; }
+.chatbot-trigger:hover { width: auto; padding: 0 22px; border-radius: 50px; }
+.chatbot-trigger:hover .chatbot-trigger-text { display: inline; }
+.chatbot-panel { position: absolute; bottom: 76px; right: 0; width: 280px; background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); box-shadow: 0 16px 48px rgba(0,0,0,0.5); overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(12px) scale(0.95); transition: all 0.35s var(--ease); }
+.chatbot-widget.open .chatbot-panel { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+.chatbot-panel[aria-hidden="false"] { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+.chatbot-header { display: flex; align-items: center; justify-content: space-between; padding: 20px; background: var(--dark-3); border-bottom: 1px solid var(--glass-border); }
+.chatbot-header h4 { font-size: 1.1rem; font-weight: 700; color: var(--white); margin: 0; }
+.chatbot-close { background: none; border: none; color: var(--gray); font-size: 1.2rem; cursor: pointer; padding: 4px; transition: color 0.3s; }
+.chatbot-close:hover { color: var(--silver); }
+.chatbot-options { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.chatbot-option { display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: var(--dark-3); border: 1px solid var(--glass-border); border-radius: var(--radius); color: var(--text); font-weight: 500; font-size: 0.95rem; transition: all 0.3s; }
+.chatbot-option:hover { background: rgba(192,192,192,0.1); border-color: var(--silver); color: var(--silver-light); transform: translateX(-4px); }
+.chatbot-option i { font-size: 1.2rem; color: var(--silver); width: 28px; text-align: center; flex-shrink: 0; }
+@media (max-width: 600px) {
+    .chatbot-widget { bottom: max(20px, env(safe-area-inset-bottom)); right: max(16px, env(safe-area-inset-right)); }
+    .chatbot-trigger { width: 52px; height: 52px; font-size: 1.3rem; }
+    .chatbot-trigger:hover .chatbot-trigger-text { display: none; }
+    .chatbot-panel { width: calc(100vw - 40px); max-width: 280px; right: 0; }
+}
 
 /* === Top Bar === */
 .top-bar { background: var(--dark-2); padding: 10px 0; border-bottom: 1px solid var(--glass-border); font-size: 0.85rem; }
@@ -164,7 +192,7 @@ a { text-decoration: none; }
 .hero-buttons-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 12px; max-width: 420px; }
 .hero-buttons-grid .btn-quote { grid-column: 1; grid-row: 1; justify-content: center; }
 .hero-buttons-grid .btn-call { grid-column: 2; grid-row: 1; justify-content: center; }
-.hero-buttons-grid .btn-free-quote { grid-column: 1; grid-row: 2; justify-content: center; }
+.hero-buttons-grid .btn-free-quote { grid-column: 1 / -1; grid-row: 2; justify-content: center; }
 
 .hero-title { font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px; }
 .hero-title .line { display: block; color: var(--white); animation: fadeUp 0.8s ease both; }
@@ -206,7 +234,7 @@ a { text-decoration: none; }
 
 /* === Cards Section === */
 .cards-section { padding: 120px 0; }
-.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
 .premium-card { background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); overflow: hidden; transition: all 0.5s var(--ease); }
 .premium-card:hover { transform: translateY(-12px); border-color: var(--silver); box-shadow: 0 24px 64px rgba(192,192,192,0.1); }
 .premium-card-img { position: relative; height: 220px; overflow: hidden; }

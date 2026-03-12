@@ -86,6 +86,35 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('a11y-statement')?.showModal();
     });
 
+    // === Chat Bot Widget ===
+    const chatbotWidget = document.getElementById('chatbotWidget');
+    const chatbotTrigger = document.getElementById('chatbotTrigger');
+    const chatbotPanel = document.getElementById('chatbotPanel');
+    const chatbotClose = document.getElementById('chatbotClose');
+
+    function openChatbot() {
+        chatbotWidget?.classList.add('open');
+        chatbotPanel?.setAttribute('aria-hidden', 'false');
+        chatbotTrigger?.setAttribute('aria-expanded', 'true');
+    }
+    function closeChatbot() {
+        chatbotWidget?.classList.remove('open');
+        chatbotPanel?.setAttribute('aria-hidden', 'true');
+        chatbotTrigger?.setAttribute('aria-expanded', 'false');
+    }
+
+    chatbotTrigger?.addEventListener('click', () => {
+        if (chatbotWidget?.classList.contains('open')) closeChatbot();
+        else openChatbot();
+    });
+    chatbotClose?.addEventListener('click', closeChatbot);
+
+    document.addEventListener('click', (e) => {
+        if (chatbotWidget?.classList.contains('open') && !chatbotWidget.contains(e.target)) {
+            closeChatbot();
+        }
+    });
+
     // === Smooth Scroll ===
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {

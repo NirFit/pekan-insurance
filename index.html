@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>פקאן סוכנות לביטוח בע"מ | עפולה ורחובות - ביטוח מקצועי מאז 2015</title>
-    <meta name="description" content="פקאן סוכנות לביטוח - סניפים בעפולה ורחובות. ביטוחי בריאות, רכב, נסיעות, חיים. עובדים עם הראל, מגדל, מנורה, כלל, הפניקס, איילון, שירביט, הכשרה ועוד. ייעוץ חינם.">
-    <meta name="keywords" content="פקאן ביטוח, ביטוח עפולה, ביטוח רחובות, ביטוח רכב, ביטוח בריאות, ביטוח נסיעות">
+    <meta name="description" content="פקאן סוכנות לביטוח - סניפים בעפולה ורחובות. ביטוחי בריאות, נסיעות, חיים. עובדים עם הראל, מגדל, מנורה, כלל, הפניקס, איילון, שירביט, הכשרה ועוד. ייעוץ חינם.">
+    <meta name="keywords" content="פקאן ביטוח, ביטוח עפולה, ביטוח רחובות, ביטוח בריאות, ביטוח נסיעות">
     <meta property="og:title" content="פקאן סוכנות לביטוח בע&quot;מ">
     <meta property="og:description" content="פתרונות ביטוח מקצועיים בעפולה ורחובות מאז 2015">
     <meta property="og:type" content="website">
@@ -28,12 +28,12 @@
         "@context": "https://schema.org",
         "@type": "InsuranceAgency",
         "name": "פקאן סוכנות לביטוח בע\"מ",
-        "description": "סוכנות ביטוח מובילה בעפולה ורחובות. ביטוחי בריאות, רכב, נסיעות וחיים.",
+        "description": "סוכנות ביטוח מובילה בעפולה ורחובות. ביטוחי בריאות, נסיעות וחיים.",
         "url": "https://nirfit.github.io/pekan-insurance/",
         "telephone": ["+972-77-2054425", "+972-54-715-1450"],
         "email": "pekan@pekan-ins.co.il",
         "address": [
-            {"@type": "PostalAddress", "streetAddress": "ארלוזורוב 11/ב", "addressLocality": "עפולה"},
+            {"@type": "PostalAddress", "streetAddress": "המלאכה 21", "addressLocality": "עפולה"},
             {"@type": "PostalAddress", "streetAddress": "פקיעין 2", "addressLocality": "רחובות"}
         ],
         "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "09:00", "closes": "18:00"}
@@ -46,7 +46,7 @@
     <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="preloader-inner">
-            <div class="preloader-logo"><img src="assets/pekan-logo-full.png" alt="פקאן סוכנות לביטוח" width="180" height="auto"></div>
+            <div class="preloader-logo"><img src="assets/pekan-logo-full.png" alt="פקאן סוכנות לביטוח" width="320" height="auto"></div>
             <div class="preloader-bar"><div class="preloader-fill"></div></div>
         </div>
     </div>
@@ -62,6 +62,40 @@
         <i class="fab fa-whatsapp" aria-hidden="true"></i>
         <span class="wa-text">שלח הודעה</span>
     </a>
+
+    <!-- Chat Bot Widget - צד ימין למטה -->
+    <div class="chatbot-widget" id="chatbotWidget" role="region" aria-label="צ׳אט בוט - במה אפשר לעזור">
+        <div class="chatbot-panel" id="chatbotPanel" aria-hidden="true">
+            <div class="chatbot-header">
+                <h4>במה אפשר לעזור?</h4>
+                <button type="button" class="chatbot-close" id="chatbotClose" aria-label="סגור צ׳אט">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-options">
+                <a href="https://wa.me/972547151450?text=שלום%2C%20אני%20מעוניין%2Fת%20במידע%20על%20ביטוחי%20בריאות" class="chatbot-option" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-heart-pulse"></i>
+                    <span>בריאות</span>
+                </a>
+                <a href="https://wa.me/972547151450?text=שלום%2C%20אני%20מעוניין%2Fת%20במידע%20על%20קופות%20גמל" class="chatbot-option" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-piggy-bank"></i>
+                    <span>גמל</span>
+                </a>
+                <a href="https://wa.me/972547151450?text=שלום%2C%20אני%20מעוניין%2Fת%20במידע%20על%20פנסיה" class="chatbot-option" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-landmark"></i>
+                    <span>פנסיה</span>
+                </a>
+                <a href="https://wa.me/972547151450?text=שלום%2C%20אני%20מעוניין%2Fת%20במידע%20על%20השקעות" class="chatbot-option" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-chart-line"></i>
+                    <span>השקעות</span>
+                </a>
+            </div>
+        </div>
+        <button type="button" class="chatbot-trigger" id="chatbotTrigger" aria-label="פתח צ׳אט - במה אפשר לעזור" aria-expanded="false" aria-controls="chatbotPanel">
+            <i class="fas fa-comments"></i>
+            <span class="chatbot-trigger-text">במה אפשר לעזור</span>
+        </button>
+    </div>
 
     <!-- Top Bar -->
     <div class="top-bar" id="topBar">
@@ -232,19 +266,6 @@
                     <div class="premium-card-body">
                         <h3>ביטוחי נסיעות לחו"ל</h3>
                         <p>טסים לחו"ל? ביטוח נסיעות ממגוון חברות הביטוח - כיסוי מלא בהתאמה אישית ושקט נפשי בחופשה עם המשפחה או לבד.</p>
-                        <a href="#contact" class="card-link">קבל הצעה <i class="fas fa-arrow-left"></i></a>
-                    </div>
-                </article>
-                <article class="premium-card reveal" data-delay="2">
-                    <div class="premium-card-img">
-                        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=600&q=80" alt="ביטוחי רכב" loading="lazy">
-                        <div class="premium-card-overlay">
-                            <i class="fas fa-car-side"></i>
-                        </div>
-                    </div>
-                    <div class="premium-card-body">
-                        <h3>ביטוחי רכב</h3>
-                        <p>פקאן מספקת שירותי ביטוח רכב מקיפים - ביטוח חובה, מקיף וצד ג'. בהשוואת מחירים מכל חברות הביטוח נספק לכם את ההצעה הטובה ביותר.</p>
                         <a href="#contact" class="card-link">קבל הצעה <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </article>
@@ -514,15 +535,6 @@
                 <div class="review-card reveal" data-delay="0">
                     <div class="review-quote"><i class="fas fa-quote-right"></i></div>
                     <div class="review-stars">★★★★★</div>
-                    <p>"שירות מעולה! קיבלתי הצעה מצוינת לביטוח הרכב - חיסכתי אלפי שקלים. הצוות בסניף עפולה מקצועי ונעים."</p>
-                    <div class="review-author">
-                        <div class="review-avatar">מ</div>
-                        <div><strong>משה כהן</strong><span>עפולה</span></div>
-                    </div>
-                </div>
-                <div class="review-card reveal" data-delay="1">
-                    <div class="review-quote"><i class="fas fa-quote-right"></i></div>
-                    <div class="review-stars">★★★★★</div>
                     <p>"הטיפול המקצועי והסבלנות בהסבר על כל האפשרויות - בדיוק מה שחיפשתי. ממליצה בחום על הסניף ברחובות."</p>
                     <div class="review-author">
                         <div class="review-avatar">ר</div>
@@ -556,7 +568,7 @@
                         <i class="fas fa-plus"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>לפקאן שני סניפים: <strong>סניף צפון</strong> – ארלוזורוב 11/ב עפולה, וְ<strong>סניף מרכז</strong> – פקיעין 2 רחובות.</p>
+                        <p>לפקאן שני סניפים: <strong>סניף צפון</strong> – המלאכה 21 עפולה, וְ<strong>סניף מרכז</strong> – פקיעין 2 רחובות.</p>
                     </div>
                 </div>
                 <div class="faq-item reveal">
@@ -664,8 +676,8 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <h4>סניף צפון - עפולה</h4>
                         </div>
-                        <p class="branch-address">ארלוזורוב 11/ב, עפולה</p>
-                        <a href="https://www.google.com/maps/search/ארלוזורוב+11+עפולה" target="_blank" rel="noopener noreferrer" class="branch-map"><i class="fas fa-directions"></i> ניווט לסניף</a>
+                        <p class="branch-address">המלאכה 21, עפולה</p>
+                        <a href="https://www.google.com/maps/search/המלאכה+21+עפולה" target="_blank" rel="noopener noreferrer" class="branch-map"><i class="fas fa-directions"></i> ניווט לסניף</a>
                         <div class="branch-contact">
                             <a href="tel:0772054425"><i class="fas fa-phone-alt"></i> משרד: 077-2054425</a>
                             <a href="tel:0547151450"><i class="fas fa-mobile-alt"></i> נייד: 054-715-1450</a>
@@ -707,7 +719,7 @@
             </div>
             <div class="footer-bottom">
                 <p>© 2025 פקאן סוכנות לביטוח בע"מ. כל הזכויות שמורות.</p>
-                <p>סניף צפון: ארלוזורוב 11/ב עפולה | סניף מרכז: פקיעין 2 רחובות</p>
+                <p>סניף צפון: המלאכה 21 עפולה | סניף מרכז: פקיעין 2 רחובות</p>
                 <p><a href="#a11y-statement" id="a11y-link" class="a11y-footer-link">הצהרת נגישות</a> | <a href="privacy.html" class="a11y-footer-link">מדיניות פרטיות</a></p>
             </div>
         </div>
