@@ -137,6 +137,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // === Reviews Carousel ===
+    const reviewsTrack = document.getElementById('reviewsTrack');
+    const reviewsPrev = document.getElementById('reviewsPrev');
+    const reviewsNext = document.getElementById('reviewsNext');
+    const reviewsDots = document.getElementById('reviewsDots');
+    if (reviewsTrack && reviewsDots) {
+        const cards = reviewsTrack.querySelectorAll('.review-card');
+        const total = cards.length;
+        let currentIndex = 0;
+
+        for (let i = 0; i < total; i++) {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'ביקורת ' + (i + 1));
+            dot.addEventListener('click', () => goTo(i));
+            reviewsDots.appendChild(dot);
+        }
+        const dots = reviewsDots.querySelectorAll('.dot');
+
+        function goTo(index) {
+            currentIndex = (index + total) % total;
+            const offset = (window.innerWidth >= 900) ? 0 : -currentIndex * 100;
+            reviewsTrack.style.transform = 'translateX(' + offset + '%)';
+            dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+        }
+
+        reviewsPrev?.addEventListener('click', () => goTo(currentIndex - 1));
+        reviewsNext?.addEventListener('click', () => goTo(currentIndex + 1));
+
+        let autoInterval = setInterval(() => goTo(currentIndex + 1), 5000);
+        reviewsTrack.closest('.reviews-carousel-wrap')?.addEventListener('mouseenter', () => clearInterval(autoInterval));
+        reviewsTrack.closest('.reviews-carousel-wrap')?.addEventListener('mouseleave', () => {
+            autoInterval = setInterval(() => goTo(currentIndex + 1), 5000);
+        });
+    }
+
     // === Reveal on Scroll ===
     const reveals = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
