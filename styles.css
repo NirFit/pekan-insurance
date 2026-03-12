@@ -211,12 +211,6 @@ a { text-decoration: none; }
 .hero-stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.15); }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
-.hero-scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.mouse { width: 24px; height: 38px; border: 2px solid rgba(255,255,255,0.4); border-radius: 12px; position: relative; }
-.wheel { width: 4px; height: 8px; background: var(--silver); border-radius: 2px; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); animation: scroll-wheel 2s infinite; }
-@keyframes scroll-wheel { 0% { opacity: 1; transform: translateX(-50%) translateY(0); } 100% { opacity: 0; transform: translateX(-50%) translateY(16px); } }
-.hero-scroll-indicator span { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
-
 /* === Trust Strip === */
 .trust-strip { padding: 32px 0 0; position: relative; }
 .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); overflow: hidden; }
@@ -347,6 +341,12 @@ a { text-decoration: none; }
 .partner-logo-item { width: 140px; height: 80px; flex-shrink: 0; background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; padding: 12px 20px; transition: all 0.3s; }
 .partner-logo-item:hover { border-color: var(--silver); box-shadow: 0 8px 24px rgba(192,192,192,0.15); }
 .partner-logo-item img { max-width: 100%; max-height: 100%; object-fit: contain; }
+/* Hide carousel arrow buttons (עיגול אפור וחץ ימינה) - keep only logos */
+.reviews-carousel-btn, .reviews-carousel-prev, .reviews-carousel-next, .reviews-carousel-dots { display: none !important; }
+.partners-carousel-track > *:not(.partner-logo-item) { display: none !important; }
+.partners-carousel-track > *:has(.fa-chevron-right, .fa-chevron-left, .fa-angle-right, .fa-angle-left),
+.partners-carousel-track > *:has(button),
+.partners-carousel-track button { display: none !important; visibility: hidden !important; }
 /* נכנס משמאל יוצא מימין */
 @keyframes partners-carousel {
     0% { transform: translateX(0); }
@@ -510,7 +510,6 @@ a { text-decoration: none; }
     .hero-desc { font-size: 1rem; margin-bottom: 28px; }
     .hero-buttons { margin-bottom: 40px; }
     .hero-stats { margin-bottom: 0; }
-    .hero-scroll-indicator { bottom: 24px; }
     /* WhatsApp - safe area למכשירים עם notch */
     .whatsapp-float { bottom: max(20px, env(safe-area-inset-bottom)); left: max(16px, env(safe-area-inset-left)); }
     /* סקציות - הפחתת padding */

@@ -140,6 +140,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // === Partners - hide items without image, remove arrow buttons (עיגול אפור וחץ ימינה) ===
+    function cleanPartnersCarousel() {
+        const track = document.querySelector('.partners-carousel-track');
+        if (!track) return;
+        track.querySelectorAll('.partner-logo-item').forEach(item => {
+            const img = item.querySelector('img');
+            if (!img) {
+                item.remove();
+                return;
+            }
+            img.addEventListener('error', () => item.remove());
+        });
+        // Remove any element that has no img (arrow buttons, placeholders)
+        track.querySelectorAll(':scope > *').forEach(el => {
+            if (!el.querySelector('img') || el.querySelector('i[class*="chevron"], i[class*="angle"]')) {
+                el.remove();
+            }
+        });
+        document.querySelectorAll('.reviews-carousel-btn, .reviews-carousel-prev, .reviews-carousel-next, .reviews-carousel-dots').forEach(el => el.remove());
+    }
+    cleanPartnersCarousel();
+    // Also run after images load - remove items where image failed (naturalWidth=0)
+    window.addEventListener('load', () => {
+        document.querySelectorAll('.partners-carousel-track .partner-logo-item').forEach(item => {
+            const img = item.querySelector('img');
+            if (img && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
+                item.remove();
+            }
+        });
+    });
+
     // === Reviews Carousel ===
     const reviewsTrack = document.getElementById('reviewsTrack');
     if (reviewsTrack) {
