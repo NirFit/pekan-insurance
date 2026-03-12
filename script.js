@@ -211,18 +211,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 if (res.ok) {
                     btn.innerHTML = '<i class="fas fa-check"></i> נשלח בהצלחה!';
-                    btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                    btn.style.background = 'linear-gradient(135deg, #c0c0c0, #909090)';
                     contactForm.reset();
                 } else {
                     throw new Error('שגיאה בשליחה');
                 }
             } catch (err) {
                 btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> שגיאה - נסה שוב';
-                btn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+                btn.style.background = 'linear-gradient(135deg, #606060, #404040)';
             }
         } else {
             btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> טופס לא מוגדר';
-            btn.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+            btn.style.background = 'linear-gradient(135deg, #909090, #606060)';
             console.warn('Formspree לא מוגדר ב-config.js - הוסף FORMSPREE_ID לקבלת פניות');
         }
         setTimeout(() => {
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(212, 168, 67, ${this.opacity})`;
+                ctx.fillStyle = `rgba(192, 192, 192, ${this.opacity})`;
                 ctx.fill();
             }
         }
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(212, 168, 67, ${0.08 * (1 - dist / 120)})`;
+                        ctx.strokeStyle = `rgba(192, 192, 192, ${0.08 * (1 - dist / 120)})`;
                         ctx.lineWidth = 0.5;
                         ctx.stroke();
                     }
