@@ -47,6 +47,7 @@ html { scroll-behavior: smooth; }
 .cookie-banner-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .cookie-content { flex: 1; min-width: 280px; }
 .cookie-title { font-size: 1.1rem; color: var(--white); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.cookie-logo { height: 28px; width: auto; opacity: 0.9; }
 .cookie-title i { color: var(--gold); }
 .cookie-desc { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
 .cookie-link { color: var(--gold); text-decoration: underline; }
@@ -66,7 +67,8 @@ a { text-decoration: none; }
 .preloader { position: fixed; inset: 0; z-index: 9999; background: var(--dark); display: flex; align-items: center; justify-content: center; transition: opacity 0.6s, visibility 0.6s; }
 .preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .preloader-inner { text-align: center; }
-.preloader-logo { font-size: 3rem; color: var(--gold); margin-bottom: 24px; animation: pulse-glow 1.5s infinite; }
+.preloader-logo { margin-bottom: 24px; animation: pulse-glow 1.5s infinite; }
+.preloader-logo img { max-width: 200px; height: auto; display: block; margin: 0 auto; }
 .preloader-bar { width: 200px; height: 3px; background: var(--dark-3); border-radius: 4px; overflow: hidden; }
 .preloader-fill { height: 100%; background: var(--gold); border-radius: 4px; animation: preload-fill 1.8s ease forwards; }
 @keyframes preload-fill { from { width: 0; } to { width: 100%; } }
@@ -101,6 +103,7 @@ a { text-decoration: none; }
 .navbar.scrolled { top: 0; background: rgba(8,13,26,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 12px 0; }
 .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
 .logo { display: flex; align-items: center; gap: 12px; }
+.logo-img { height: 48px; width: auto; object-fit: contain; display: block; }
 .logo-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--dark); font-size: 1.25rem; }
 .logo-text { font-size: 1.4rem; font-weight: 700; color: var(--white); }
 .logo-text span { font-weight: 400; color: var(--gold); margin-right: 4px; }
@@ -132,6 +135,7 @@ a { text-decoration: none; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,13,26,0.88) 0%, rgba(8,13,26,0.7) 50%, rgba(8,13,26,0.92) 100%); }
 .hero-particles { position: absolute; inset: 0; z-index: 1; }
 .hero-content { position: relative; z-index: 2; text-align: center; max-width: 860px; margin: 0 auto; }
+.hero-logo { display: block; margin: 0 auto 24px; opacity: 0.95; animation: fadeUp 0.8s ease both; }
 .hero-badges { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; margin-bottom: 28px; animation: fadeUp 0.8s ease both; }
 .hero-badge { display: inline-block; padding: 8px 24px; background: rgba(212,168,67,0.15); border: 1px solid rgba(212,168,67,0.3); color: var(--gold); border-radius: 50px; font-size: 0.9rem; font-weight: 500; }
 .hero-live-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.4); color: #4ade80; border-radius: 50px; font-size: 0.85rem; font-weight: 600; }
@@ -146,6 +150,7 @@ a { text-decoration: none; }
 /* Money Returned Banner */
 .money-banner { background: linear-gradient(135deg, rgba(212,168,67,0.15), rgba(212,168,67,0.05)); border-top: 1px solid rgba(212,168,67,0.2); border-bottom: 1px solid rgba(212,168,67,0.2); padding: 28px 0; }
 .money-banner-inner { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; position: relative; }
+.money-banner-logo { height: 40px; width: auto; opacity: 0.85; flex-shrink: 0; }
 .money-stat { display: flex; align-items: baseline; gap: 4px; }
 .money-number { font-size: 2.5rem; font-weight: 900; color: var(--gold); line-height: 1; }
 .money-suffix { font-size: 1.8rem; font-weight: 800; color: var(--gold); }
@@ -218,6 +223,8 @@ a { text-decoration: none; }
 /* === About === */
 .about-section { padding: 140px 0; }
 .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-visual { position: relative; }
+.about-section-logo { position: absolute; top: -12px; right: -12px; z-index: 2; background: var(--dark-2); padding: 10px; border-radius: var(--radius); border: 1px solid var(--glass-border); box-shadow: var(--shadow); }
 .about-image-stack { position: relative; }
 .about-img-1 { border-radius: var(--radius-lg); width: 100%; height: 480px; object-fit: cover; box-shadow: var(--shadow); }
 .about-img-2 { position: absolute; bottom: -40px; right: -40px; width: 220px; height: 160px; border-radius: var(--radius); object-fit: cover; border: 4px solid var(--dark); box-shadow: var(--shadow); }
@@ -342,6 +349,7 @@ a { text-decoration: none; }
 /* === CTA === */
 .cta-section { padding: 80px 0; }
 .cta-box { background: linear-gradient(135deg, var(--dark-2), var(--dark-3)); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 64px; text-align: center; position: relative; overflow: hidden; }
+.cta-logo { display: block; margin: 0 auto 20px; opacity: 0.9; }
 .cta-bg-pattern { position: absolute; inset: 0; background: radial-gradient(circle at 30% 50%, rgba(212,168,67,0.08), transparent 50%); }
 .cta-box h2 { font-size: 2.25rem; font-weight: 800; color: var(--white); margin-bottom: 12px; position: relative; }
 .cta-box > p { color: var(--gray); font-size: 1.05rem; margin-bottom: 32px; position: relative; }
@@ -351,6 +359,7 @@ a { text-decoration: none; }
 .contact-section { padding: 120px 0; background: var(--dark-2); }
 .contact-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: start; }
 .contact-form-card { background: var(--dark-3); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 40px; box-shadow: 0 16px 48px rgba(0,0,0,0.2); }
+.contact-form-logo { display: block; margin-bottom: 24px; opacity: 0.9; }
 .contact-form-desc { color: var(--gray); margin-bottom: 28px; line-height: 1.7; font-size: 1rem; }
 .about-text { min-width: 0; }
 .about-text p { overflow-wrap: break-word; word-wrap: break-word; }
@@ -402,7 +411,9 @@ a { text-decoration: none; }
 /* === Footer === */
 .site-footer { padding: 48px 0 28px; background: var(--dark); border-top: 1px solid var(--glass-border); }
 .footer-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; margin-bottom: 28px; }
-.footer-brand { display: flex; align-items: center; gap: 12px; color: var(--white); font-weight: 600; }
+.footer-brand { display: flex; align-items: center; gap: 16px; color: var(--white); font-weight: 600; flex-wrap: wrap; }
+.footer-logo-img { height: 42px; width: auto; object-fit: contain; display: block; }
+.footer-brand-text { font-size: 1rem; }
 .footer-logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--dark); font-size: 1rem; }
 .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
 .footer-links a { color: var(--gray); font-size: 0.9rem; transition: color 0.3s; }
@@ -455,6 +466,11 @@ a { text-decoration: none; }
     .about-img-2 { display: none; }
     .about-experience-badge { top: auto; bottom: -20px; left: 20px; }
     .premium-form .form-row { grid-template-columns: 1fr; }
+    .hero-logo { max-width: 120px; margin-bottom: 20px; }
+    .money-banner-logo { height: 32px; }
+    .cta-logo { max-width: 64px; margin-bottom: 16px; }
+    .contact-form-logo { max-width: 56px; margin-bottom: 20px; }
+    .about-section-logo { width: 80px; top: -8px; right: -8px; padding: 8px; }
     .contact-form-card { padding: 28px 24px; }
     .cta-box { padding: 40px 24px; }
     /* Hero - הפחתת padding כדי שהתוכן ייכנס במסך */
@@ -482,6 +498,7 @@ a { text-decoration: none; }
     .hero-badges { gap: 8px; margin-bottom: 20px; }
     .hero-badge, .hero-live-badge { font-size: 0.8rem; padding: 6px 16px; }
     .logo-text { font-size: 1.2rem; }
+    .logo-img { height: 40px; }
     .logo-icon { width: 38px; height: 38px; font-size: 1.1rem; }
     .money-banner-inner { flex-wrap: wrap; justify-content: center; gap: 12px; }
     .money-number { font-size: 1.8rem; }
