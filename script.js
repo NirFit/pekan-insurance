@@ -1,3 +1,6 @@
+// === הסרת כפתורי קרוסלה - רץ מיד לפני DOMContentLoaded ===
+(function(){ function hide(){ var s='.reviews-carousel-btn,.reviews-carousel-prev,.reviews-carousel-next,.reviews-carousel-dots,#reviewsPrev,#reviewsNext,#reviewsDots,.reviews-carousel-wrap>button'; document.querySelectorAll(s).forEach(function(el){ el.remove(); }); } hide(); if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',hide); } setTimeout(hide,100); setTimeout(hide,500); setTimeout(hide,1500); })();
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // === עוגיות - הסכמה והטענת GA ===
@@ -140,22 +143,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+
+
     // === Partners - הסתרת כפתור הבא, הסרת פריטים ללא תמונה ===
     function removeCarouselButtons() {
         const sel = '.reviews-carousel-btn, .reviews-carousel-prev, .reviews-carousel-next, .reviews-carousel-dots, #reviewsPrev, #reviewsNext, #reviewsDots, .reviews-carousel-wrap > button';
         document.querySelectorAll(sel).forEach(el => el.remove());
     }
-    function cleanPartnersCarousel() {
-        const wrap = document.querySelector('.partners-carousel-wrap');
-        const track = document.querySelector('.partners-carousel-track');
-        if (!track) return;
-        wrap?.querySelectorAll('button, [role="button"]').forEach(el => el.remove());
-        track.querySelectorAll(':scope > *').forEach(el => {
-            if (!el.classList.contains('partner-logo-item') || el.querySelector('i[class*="chevron"], i[class*="angle"]') || !el.querySelector('img')) {
-                el.remove();
-            }
-        });
-        track.querySelectorAll('.partner-logo-item').forEach(item => {
+    function cleanPartnersLogos() {
+        const grid = document.querySelector('.partners-logos-grid');
+        if (!grid) return;
+        grid.querySelectorAll('.partner-logo-item').forEach(item => {
             const img = item.querySelector('img');
             if (!img) item.remove();
             else img.addEventListener('error', () => item.remove());
@@ -163,11 +161,11 @@ document.addEventListener('DOMContentLoaded', () => {
         removeCarouselButtons();
     }
     removeCarouselButtons();
-    cleanPartnersCarousel();
+    cleanPartnersLogos();
     window.addEventListener('load', () => {
         removeCarouselButtons();
-        cleanPartnersCarousel();
-        document.querySelectorAll('.partners-carousel-track .partner-logo-item').forEach(item => {
+        cleanPartnersLogos();
+        document.querySelectorAll('.partners-logos-grid .partner-logo-item').forEach(item => {
             const img = item.querySelector('img');
             if (img && (img.naturalWidth === 0 || img.naturalHeight === 0)) item.remove();
         });

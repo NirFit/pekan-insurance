@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io https://www.google-analytics.com https://www.googletagmanager.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formspree.io;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://formspree.io https://www.google-analytics.com https://www.googletagmanager.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formspree.io;">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>פקאן סוכנות לביטוח בע"מ | עפולה ורחובות - ביטוח מקצועי מאז 2015</title>
-    <meta name="description" content="פקאן סוכנות לביטוח - סניפים בעפולה ורחובות. ביטוחי בריאות, נסיעות, חיים. עובדים עם הראל, מגדל, מנורה, כלל, הפניקס, איילון, הכשרה ועוד. ייעוץ חינם.">
-    <meta name="keywords" content="פקאן ביטוח, ביטוח עפולה, ביטוח רחובות, ביטוח בריאות, ביטוח נסיעות, ביטוח חיים, ביטוח סיעוד, סוכנות ביטוח עפולה, סוכנות ביטוח רחובות, השוואת ביטוחים, ייעוץ ביטוח חינם">
+    <meta name="description" content="פקאן סוכנות לביטוח - סניפים בעפולה ורחובות. ביטוחי בריאות, נסיעות, חיים. עובדים עם הראל, מגדל, מנורה, כלל, הפניקס, איילון, הכשרה ועוד. הצעת מחיר חינם.">
+    <meta name="keywords" content="פקאן ביטוח, ביטוח עפולה, ביטוח רחובות, ביטוח בריאות, ביטוח נסיעות, ביטוח חיים, ביטוח סיעוד, סוכנות ביטוח עפולה, סוכנות ביטוח רחובות, השוואת ביטוחים, הצעת מחיר ביטוח חינם">
     <meta property="og:title" content="פקאן סוכנות לביטוח בע&quot;מ">
     <meta property="og:description" content="פתרונות ביטוח מקצועיים בעפולה ורחובות מאז 2015">
     <meta property="og:type" content="website">
@@ -20,7 +20,7 @@
     <meta property="og:image:alt" content="פקאן סוכנות לביטוח - עפולה ורחובות">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="פקאן סוכנות לביטוח בע&quot;מ | עפולה ורחובות">
-    <meta name="twitter:description" content="ביטוח מקצועי מאז 2015. ביטוחי בריאות, נסיעות, חיים. ייעוץ חינם וללא התחייבות.">
+    <meta name="twitter:description" content="ביטוח מקצועי מאז 2015. ביטוחי בריאות, נסיעות, חיים. הצעת מחיר חינם וללא התחייבות.">
     <meta name="twitter:image" content="https://nirfit.github.io/pekan-insurance/assets/pekan-logo-full.png">
     <link rel="canonical" href="https://nirfit.github.io/pekan-insurance/">
     <link rel="icon" type="image/png" href="assets/pekan-logo-full.png">
@@ -28,8 +28,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="styles.css">
+    <style>
+    /* הסתרת כפתורי חץ קרוסלה - נטען עם הדף */
+    .reviews-carousel-btn, .reviews-carousel-prev, .reviews-carousel-next, .reviews-carousel-dots,
+    .reviews-carousel-wrap > button, .reviews-carousel-wrap > div.reviews-carousel-dots,
+    #reviewsPrev, #reviewsNext, #reviewsDots,
+    .partners-section button, .partners-carousel-wrap [role="button"] { display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; width: 0 !important; height: 0 !important; min-width: 0 !important; min-height: 0 !important; padding: 0 !important; margin: 0 !important; overflow: hidden !important; position: absolute !important; left: -9999px !important; clip: rect(0,0,0,0) !important; }
+    </style>
     <script src="config.js"></script>
     <!-- Google Analytics 4 - נטען רק לאחר הסכמת המשתמש לעוגיות -->
     <script type="application/ld+json">
@@ -55,7 +62,7 @@
         "mainEntity": [
             {"@type": "Question", "name": "איפה נמצאים הסניפים שלכם?", "acceptedAnswer": {"@type": "Answer", "text": "לפקאן שני סניפים: סניף צפון – המלאכה 21 עפולה, וסניף מרכז – פקיעין 2 רחובות."}},
             {"@type": "Question", "name": "עם אילו חברות ביטוח אתם עובדים?", "acceptedAnswer": {"@type": "Answer", "text": "אנחנו עובדים עם כל חברות הביטוח בישראל - הראל, מגדל, מנורה, כלל, הפניקס, איילון, הכשרה, שלמה, ביטוח ישיר ועוד."}},
-            {"@type": "Question", "name": "האם הייעוץ חינם?", "acceptedAnswer": {"@type": "Answer", "text": "כן! הייעוץ שלנו חינם וללא התחייבות. נשמח להעניק לכם הצעת מחיר ולהשוות עבורכם בין החברות."}},
+            {"@type": "Question", "name": "האם הצעת המחיר חינם?", "acceptedAnswer": {"@type": "Answer", "text": "כן! הצעת המחיר שלנו חינם וללא התחייבות. נשמח להשוות עבורכם בין החברות ולמצוא את הפתרון המתאים."}},
             {"@type": "Question", "name": "איך אפשר ליצור קשר?", "acceptedAnswer": {"@type": "Answer", "text": "ניתן להתקשר למשרד: 077-2054425 או לנייד: 054-715-1450. בנוסף ניתן למלא את טופס יצירת הקשר או לשלוח הודעת WhatsApp."}}
         ]
     }
@@ -177,7 +184,7 @@
                 <span class="line">מגנים על מה</span>
                 <span class="line accent">שחשוב לכם</span>
             </h1>
-            <p class="hero-desc">סניפים בעפולה ורחובות • עובדים עם כל חברות הביטוח • ייעוץ חינם וללא התחייבות</p>
+            <p class="hero-desc">סניפים בעפולה ורחובות • עובדים עם כל חברות הביטוח • הצעת מחיר חינם וללא התחייבות</p>
             <div class="hero-buttons">
                 <div class="hero-buttons-grid">
                     <a href="#contact" class="btn btn-gold btn-quote">
@@ -219,11 +226,7 @@
             <p class="money-banner-title">מעל מאות של התביעות</p>
             <p class="money-banner-subtitle">הכוללות ביטוחי חיים, בריאות ומחלות קשות</p>
             <div class="money-banner-inner">
-                <div class="money-stat">
-                    <span class="money-number" data-target="2000000" data-format="short">0</span>
-                    <span class="money-suffix">מליון שח +</span>
-                </div>
-                <p class="money-text">הוחזרו ללקוחותינו בתביעות שאושרו</p>
+                <p class="money-full-text">מעל מליוני שקלים הוחזרו ללקוחותינו בתביעות שאושרו</p>
                 <i class="fas fa-hand-holding-dollar money-icon"></i>
             </div>
         </div>
@@ -247,7 +250,7 @@
                 </div>
                 <div class="trust-item" data-delay="3">
                     <div class="trust-icon"><i class="fas fa-gift"></i></div>
-                    <div><strong>ייעוץ חינם</strong><span>ללא התחייבות</span></div>
+                    <div><strong>הצעת מחיר חינם</strong><span>ללא התחייבות</span></div>
                 </div>
             </div>
         </div>
@@ -408,32 +411,40 @@
                 <h2 class="section-heading">עובדים עם <span class="gold">כל חברות הביטוח</span></h2>
                 <p class="section-sub">אנו עובדים עם כל חברות הביטוח המובילות בישראל ונספק לכם את ההצעה המתאימה והמשתלמת ביותר</p>
             </div>
-            <!-- קרוסלה אינסופית עם לוגואים - נכנס משמאל יוצא מימין -->
-            <div class="partners-carousel-wrap">
-                <div class="partners-carousel-mask">
-                    <div class="partners-carousel-track">
-                        <div class="partner-logo-item"><img src="assets/partners/migdal.png" alt="מגדל"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/menora.png" alt="מנורה"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/ayalon.png" alt="איילון"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/phoenix.png" alt="הפניקס"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/harel.png" alt="הראל"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/clal.png" alt="כלל"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/direct.png" alt="ביטוח ישיר"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/mor.png" alt="מור בית השקעות"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/meitav.png" alt="מיטב בית השקעות"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/altshuler.png" alt="אלטשולר שחם"></div>
-                        <!-- כפילות לצורך לולאה אינסופית -->
-                        <div class="partner-logo-item"><img src="assets/partners/migdal.png" alt="מגדל"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/menora.png" alt="מנורה"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/ayalon.png" alt="איילון"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/phoenix.png" alt="הפניקס"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/harel.png" alt="הראל"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/clal.png" alt="כלל"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/direct.png" alt="ביטוח ישיר"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/mor.png" alt="מור בית השקעות"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/meitav.png" alt="מיטב בית השקעות"></div>
-                        <div class="partner-logo-item"><img src="assets/partners/altshuler.png" alt="אלטשולר שחם"></div>
-                    </div>
+            <div class="partners-carousel-outer">
+                <div class="partners-carousel-track">
+                    <div class="partner-logo-item"><img src="assets/partners/migdal.png" alt="מגדל"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/menora.png" alt="מנורה"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/ayalon.png" alt="איילון"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/phoenix.png" alt="הפניקס"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/clal.png" alt="כלל"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/mor.png" alt="מור בית השקעות"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/meitav.png" alt="מיטב בית השקעות"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/altshuler.png" alt="אלטשולר שחם"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/migdal.png" alt="מגדל"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/menora.png" alt="מנורה"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/ayalon.png" alt="איילון"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/phoenix.png" alt="הפניקס"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/clal.png" alt="כלל"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/mor.png" alt="מור בית השקעות"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/meitav.png" alt="מיטב בית השקעות"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/altshuler.png" alt="אלטשולר שחם"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/migdal.png" alt="מגדל"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/menora.png" alt="מנורה"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/ayalon.png" alt="איילון"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/phoenix.png" alt="הפניקס"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/clal.png" alt="כלל"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/mor.png" alt="מור בית השקעות"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/meitav.png" alt="מיטב בית השקעות"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/altshuler.png" alt="אלטשולר שחם"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/migdal.png" alt="מגדל"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/menora.png" alt="מנורה"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/ayalon.png" alt="איילון"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/phoenix.png" alt="הפניקס"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/clal.png" alt="כלל"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/mor.png" alt="מור בית השקעות"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/meitav.png" alt="מיטב בית השקעות"></div>
+                    <div class="partner-logo-item"><img src="assets/partners/altshuler.png" alt="אלטשולר שחם"></div>
                 </div>
             </div>
         </div>
@@ -591,11 +602,11 @@
                 </div>
                 <div class="faq-item reveal">
                     <button class="faq-question">
-                        <span>האם הייעוץ חינם?</span>
+                        <span>האם הצעת המחיר חינם?</span>
                         <i class="fas fa-plus"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>כן! הייעוץ שלנו חינם וללא התחייבות. נשמח להעניק לכם הצעת מחיר ולהשוות עבורכם בין החברות.</p>
+                        <p>כן! הצעת המחיר שלנו חינם וללא התחייבות. נשמח להשוות עבורכם בין החברות ולמצוא את הפתרון המתאים.</p>
                     </div>
                 </div>
                 <div class="faq-item reveal">
@@ -630,7 +641,8 @@
                         <i class="fas fa-plus"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>כן, בהתאם לתנאי הפוליסה ולחוק. פדיון חלקי או מלא אפשרי במקרים מסוימים – למשל יציאה מהארץ, גיל פרישה או מצבים מיוחדים. מומלץ להתייעץ עם סוכן כדי להבין את ההשלכות והחלופות.</p>
+                        <p>ניתן לפדות את כספי הפיצויים אחרי סיום עבודה (ניתוק יחסי עובד מעביד). חלק מהכספים הנ"ל יהיה פטור ממס וחלק חייב במס, תלוי בגובה הכנסתך ובתקרת הפטור של כספי הפיצויים.</p>
+                        <p>את כספי התגמולים שנחסכו ניתן לפדות בהתאם לתקנות קופות גמל. בכל מקרה יש להתייעץ עם סוכן הביטוח.</p>
                     </div>
                 </div>
                 <div class="faq-item reveal">
@@ -639,25 +651,18 @@
                         <i class="fas fa-plus"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>תלוי בסוג הפוליסה ובמועד הפדיון. בחלק מהמקרים יש קנסות או ניכויים. נשמח לבדוק עבורכם את התנאים הספציפיים ולהמליץ על הדרך המיטבית.</p>
+                        <p>על פדיון כספים יכול לחול קנס במקרים מסוימים, כמו משיכת כספים טרם הזכאות או משיכה מעל תקרת פטור הפיצויים.</p>
+                        <p>בקרן פנסיה ותיקה, משיכת כספי פיצויים מהקרן לא מאפשרת המשך הפקדות לאותה הקרן וגורמת לאיבוד הזכות לקבלת פנסיה ללא זכות גמל בעתיד.</p>
                     </div>
                 </div>
                 <div class="faq-item reveal">
                     <button class="faq-question">
-                        <span>מה ההבדל בין שב"ן לביטוח בריאות פרטי?</span>
+                        <span>מדוע חשוב להצטרף לביטוח בריאות בגיל צעיר?</span>
                         <i class="fas fa-plus"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>שב"ן (שירותי בריאות נוספים) הוא תוכנית של קופת החולים – כיסוי בסיסי במחיר מסובסד. ביטוח בריאות פרטי ניתן דרך חברות ביטוח ומציע כיסוי רחב יותר: ניתוחים בחו"ל, רופאים מומחים, תרופות מחוץ לסל ועוד. רבים משלבים בין השניים.</p>
-                    </div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-question">
-                        <span>למה חשוב להצטרף לביטוח בריאות בגיל צעיר?</span>
-                        <i class="fas fa-plus"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>בגיל צעיר המחירים נמוכים יותר ולרוב אין צורך בהמתנה או בחריגות. ככל שמתבגרים, העלויות עולות ויכולות להיות מגבלות רפואיות. הצטרפות מוקדמת מבטיחה כיסוי טוב במחיר סביר.</p>
+                        <p>התשובה פשוטה מאוד: מבוטח המצטרף לתוכנית ביטוח בריאות בגיל צעיר מגיע (בדרך כלל) בריא וללא מחלות קודמות.</p>
+                        <p>עם השנים והגיל יעלה הסכום החודשי באופן הדרגתי, אך הזכויות הרפואיות שצבר ישמרו.</p>
                     </div>
                 </div>
             </div>
@@ -687,7 +692,7 @@
                     <div class="contact-form-card">
                         <div class="section-tag">יצירת קשר</div>
                         <h2 class="section-heading">צור <span class="gold">קשר</span></h2>
-                        <p class="contact-form-desc">לקבלת מידע נוסף, הצעת מחיר או ייעוץ חינם – מלאו את הטופס ונחזור אליכם בהקדם</p>
+                        <p class="contact-form-desc">לקבלת מידע נוסף, הצעת מחיר חינם וללא התחייבות – מלאו את הטופס ונחזור אליכם בהקדם</p>
                         <form class="premium-form" id="contactForm" action="#" method="POST">
                             <div class="form-group">
                                 <h4 class="form-group-title"><i class="fas fa-user" aria-hidden="true"></i> פרטים אישיים</h4>
@@ -755,7 +760,7 @@
                         <a href="https://www.google.com/maps/search/פקיעין+2+רחובות" target="_blank" rel="noopener noreferrer" class="branch-map"><i class="fas fa-directions"></i> ניווט לסניף</a>
                         <div class="branch-contact">
                             <a href="tel:0772054425"><i class="fas fa-phone-alt"></i> משרד: 077-2054425</a>
-                            <a href="tel:0547151450"><i class="fas fa-mobile-alt"></i> נייד: 054-715-1450</a>
+                            <a href="tel:0502663000"><i class="fas fa-mobile-alt"></i> נייד: 050-2663000</a>
                         </div>
                         <a href="mailto:Info@rp-ins.co.il" class="branch-email"><i class="fas fa-envelope"></i> Info@rp-ins.co.il</a>
                     </div>
@@ -781,6 +786,7 @@
             </div>
             <div class="footer-bottom">
                 <p>© 2025 פקאן סוכנות לביטוח בע"מ. כל הזכויות שמורות.</p>
+                <p>רישיון סוכן ביטוח מס׳ 515272771 מטעם רשות שוק ההון</p>
                 <p>סניף צפון: המלאכה 21 עפולה | סניף מרכז: פקיעין 2 רחובות</p>
                 <p><a href="#a11y-statement" id="a11y-link" class="a11y-footer-link">הצהרת נגישות</a> | <a href="privacy.html" class="a11y-footer-link">מדיניות פרטיות</a></p>
             </div>

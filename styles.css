@@ -188,6 +188,8 @@ a { text-decoration: none; }
 .money-stat { display: flex; align-items: baseline; gap: 4px; direction: rtl; }
 .money-number { font-size: 2.5rem; font-weight: 900; color: var(--silver); line-height: 1; }
 .money-suffix { font-size: 1.8rem; font-weight: 800; color: var(--silver); }
+.money-words { font-size: 2rem; font-weight: 900; color: var(--silver); line-height: 1.2; }
+.money-full-text { font-size: 1.75rem; font-weight: 800; color: var(--silver); line-height: 1.4; margin: 0; }
 .money-currency { font-size: 1.2rem; font-weight: 700; color: var(--silver-light); margin-right: 8px; }
 .money-text { font-size: 1.1rem; color: var(--text); font-weight: 500; }
 .money-icon { font-size: 1.8rem; color: var(--silver); opacity: 0.6; }
@@ -332,31 +334,24 @@ a { text-decoration: none; }
     .testimonial-image { max-width: 280px; margin: 0 auto; }
 }
 
-/* === Partners - קרוסלה אינסופית עם לוגואים === */
+/* === Partners - קרוסלה אינסופית === */
 .partners-section { padding: 100px 0; }
-.partners-carousel-wrap { margin: 0 -24px; }
-.partners-carousel-mask { overflow: hidden; padding: 24px 0; }
-.partners-carousel-track { display: flex; gap: 32px; width: max-content; flex-shrink: 0; animation: partners-carousel 35s linear infinite; direction: ltr; }
+.partners-carousel-outer { overflow: hidden; width: 100%; padding: 24px 0; position: relative; direction: ltr; }
+.partners-carousel-outer::before,
+.partners-carousel-outer::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+.partners-carousel-outer::before { right: 0; background: linear-gradient(to left, #0d0d0d, transparent); }
+.partners-carousel-outer::after { left: 0; background: linear-gradient(to right, #0d0d0d, transparent); }
+.partners-carousel-track { display: flex; gap: 24px; width: max-content; will-change: transform; direction: ltr; animation: partnersScroll 25s linear infinite; }
 .partners-carousel-track:hover { animation-play-state: paused; }
-.partner-logo-item { width: 140px; height: 80px; flex-shrink: 0; background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; padding: 12px 20px; transition: all 0.3s; }
+@keyframes partnersScroll { from { transform: translateX(0); } to { transform: translateX(-25%); } }
+.partner-logo-item { width: 160px; height: 80px; flex-shrink: 0; background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; padding: 12px 20px; transition: all 0.3s; }
 .partner-logo-item:hover { border-color: var(--silver); box-shadow: 0 8px 24px rgba(192,192,192,0.15); }
 .partner-logo-item img { max-width: 100%; max-height: 100%; object-fit: contain; }
-/* Hide carousel arrow buttons (עיגול אפור וחץ ימינה) - כפתורי הבא/הקודם */
+/* Hide carousel arrow buttons (reviews section) */
 .reviews-carousel-btn, .reviews-carousel-prev, .reviews-carousel-next, .reviews-carousel-dots,
 .reviews-carousel-wrap > button,
 .reviews-section button[aria-label*="קודמת"], .reviews-section button[aria-label*="הבאה"],
 #reviewsPrev, #reviewsNext, #reviewsDots { display: none !important; visibility: hidden !important; width: 0 !important; height: 0 !important; min-width: 0 !important; min-height: 0 !important; padding: 0 !important; margin: 0 !important; overflow: hidden !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; left: -9999px !important; }
-.partners-carousel-wrap button,
-.partners-carousel-wrap [role="button"],
-.partners-carousel-track > *:not(.partner-logo-item),
-.partners-carousel-track > *:has(.fa-chevron-right, .fa-chevron-left, .fa-angle-right, .fa-angle-left),
-.partners-carousel-track > *:has(button),
-.partners-carousel-track button { display: none !important; visibility: hidden !important; width: 0 !important; height: 0 !important; overflow: hidden !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; left: -9999px !important; }
-/* נכנס משמאל יוצא מימין */
-@keyframes partners-carousel {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(50%); }
-}
 
 /* === Reviews - קרוסלה === */
 .reviews-section { padding: 120px 0; background: var(--dark-2); }
@@ -484,7 +479,7 @@ a { text-decoration: none; }
     .container { padding: 0 20px; }
     .hero-badges { flex-direction: column; }
     .money-banner-inner { flex-direction: column; gap: 12px; }
-    .money-number { font-size: 2rem; }
+    .money-number, .money-words, .money-full-text { font-size: 2rem; }
     .partner-logo-item { width: 110px; height: 65px; }
     .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999; opacity: 0; transition: opacity 0.4s var(--ease); pointer-events: none; }
     .nav-overlay.active { display: block; opacity: 1; pointer-events: auto; }
@@ -536,7 +531,8 @@ a { text-decoration: none; }
     .logo-img { height: 48px; }
     .logo-icon { width: 38px; height: 38px; font-size: 1.1rem; }
     .money-banner-inner { flex-wrap: wrap; justify-content: center; gap: 12px; }
-    .money-number { font-size: 1.8rem; }
+    .money-number, .money-words { font-size: 1.8rem; }
+    .money-full-text { font-size: 1.45rem; }
     .proofs-grid { gap: 16px; }
     .branch-contact { flex-direction: column; }
     .footer-top { flex-direction: column; align-items: flex-start; }
