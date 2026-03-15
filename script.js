@@ -269,10 +269,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Contact Form (Formspree) ===
     const contactForm = document.getElementById('contactForm');
+    let lastSubmitTime = 0;
     contactForm?.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = contactForm.querySelector('button[type="submit"]');
         const originalHTML = btn.innerHTML;
+
+        // Honeypot check - בוטים ממלאים שדות נסתרים
+        const hpField = contactForm.querySelector('input[name="website"]');
+        if (hpField && hpField.value) return;
+
+        // Rate limiting - מניעת שליחות חוזרות (30 שניות)
+        const now = Date.now();
+        if (now - lastSubmitTime < 30000) {
+            btn.innerHTML = '<i class="fas fa-clock"></i> נא להמתין לפני שליחה נוספת';
+            btn.disabled = true;
+            setTimeout(() => { btn.innerHTML = originalHTML; btn.disabled = false; }, 3000);
+            return;
+        }
+        lastSubmitTime = now;
 
         const consentCheck = document.getElementById('privacyConsent');
         if (consentCheck && !consentCheck.checked) {
@@ -311,6 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         .replace(/on\w+=/gi, '')
                         .slice(0, 2000);
                 };
+                formData.delete('website'); // הסרת שדה honeypot
                 ['name', 'phone', 'email', 'branch', 'message'].forEach(field => {
                     const val = formData.get(field);
                     formData.set(field, sanitize(String(val || '')));

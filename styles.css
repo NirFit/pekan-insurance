@@ -1,3 +1,15 @@
+/* הסתרת כפתורי חץ קרוסלה - נטען עם הדף */
+.reviews-carousel-btn, .reviews-carousel-prev, .reviews-carousel-next, .reviews-carousel-dots,
+.reviews-carousel-wrap > button, .reviews-carousel-wrap > div.reviews-carousel-dots,
+#reviewsPrev, #reviewsNext, #reviewsDots,
+.partners-section button, .partners-carousel-wrap [role="button"] { display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; width: 0 !important; height: 0 !important; min-width: 0 !important; min-height: 0 !important; padding: 0 !important; margin: 0 !important; overflow: hidden !important; position: absolute !important; left: -9999px !important; clip: rect(0,0,0,0) !important; }
+
+/* Honeypot - שדה נסתר נגד ספאם */
+.form-hp { position: absolute !important; left: -9999px !important; opacity: 0 !important; height: 0 !important; width: 0 !important; overflow: hidden !important; pointer-events: none !important; tab-index: -1; }
+
+/* Inline style override */
+.reviews-section .section-intro { margin-top: 64px; }
+
 :root {
     --dark: #0a0a0a;
     --dark-2: #141414;
