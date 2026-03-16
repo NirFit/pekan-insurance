@@ -1,0 +1,20 @@
+---
+description: Deploy to GitHub Pages after logo or asset updates
+globs: assets/partners/*, assets/pekan*.png
+alwaysApply: false
+---
+
+# Deploy After Logo/Asset Update
+
+When updating partner logos (`assets/partners/*`) or Pekan logos (`assets/pekan*.png`):
+
+1. **Always deploy** after the update: add, commit, and push to `origin main`
+2. Use a clear commit message, e.g.: `Update logo: [company name]` or `Update partner logos: [list]`
+3. GitHub Pages will auto-deploy from the main branch
+
+Commands:
+```bash
+git add assets/partners/ assets/
+git commit -m "Update logo: [company]"
+git push origin main
+```
