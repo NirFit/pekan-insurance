@@ -288,7 +288,7 @@ a { text-decoration: none; }
 .mosaic-item p { font-size: 0.88rem; color: var(--gray); }
 
 /* === Why Section === */
-.why-section { padding: 140px 0; position: relative; overflow: hidden; }
+.why-section { padding: 140px 0 100px; position: relative; overflow: hidden; }
 .why-bg { position: absolute; inset: 0; }
 .why-bg-img { width: 100%; height: 100%; object-fit: cover; }
 .why-bg-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,13,26,0.94), rgba(8,13,26,0.88)); }
