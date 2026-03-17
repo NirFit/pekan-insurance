@@ -175,12 +175,12 @@ a { text-decoration: none; }
 .btn-full { width: 100%; justify-content: center; }
 
 /* === Hero === */
-.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 160px 24px 100px; }
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 160px 24px 100px; background: #1a1a1a; }
 .hero-bg { position: absolute; inset: 0; }
-.hero-img { width: 100%; height: 100%; object-fit: cover; }
-.hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.92) 100%); }
-.hero-particles { position: absolute; inset: 0; z-index: 1; }
-.hero-content { position: relative; z-index: 2; text-align: center; max-width: 860px; margin: 0 auto; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%); }
+.hero-logo-img { display: block; max-width: 500px; width: 88%; margin: 0 auto 32px; border-radius: 16px; position: relative; z-index: 2; }
+.hero-particles { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.hero-content { position: relative; z-index: 4; text-align: center; max-width: 860px; margin: 0 auto; }
 .hero-badges { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; margin-bottom: 28px; animation: fadeUp 0.8s ease both; }
 .hero-badge { display: inline-block; padding: 8px 24px; background: rgba(192,192,192,0.15); border: 1px solid rgba(192,192,192,0.3); color: var(--silver); border-radius: 50px; font-size: 0.9rem; font-weight: 500; }
 .hero-live-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; background: rgba(192,192,192,0.15); border: 1px solid rgba(192,192,192,0.4); color: var(--silver-light); border-radius: 50px; font-size: 0.85rem; font-weight: 600; }
