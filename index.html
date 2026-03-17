@@ -168,10 +168,6 @@
             <img src="לוגו2.jpeg" alt="פקאן ביטוח" class="hero-logo-img" fetchpriority="high">
             <div class="hero-badges">
                 <div class="hero-badge">סוכנות ביטוח מובילה מאז 2015</div>
-                <div class="hero-live-badge">
-                    <span class="live-dot"></span>
-                    אנחנו כאן בשבילכם
-                </div>
             </div>
             <h1 class="hero-title">
                 <span class="line">מגנים על מה</span>
@@ -197,37 +193,115 @@
         </div>
     </section>
 
-    <!-- Money Returned Banner -->
-    <section class="money-banner">
+    <!-- Contact -->
+    <section class="contact-section" id="contact">
         <div class="container">
-            <p class="money-banner-title">הצלחה במאות תביעות</p>
-            <p class="money-banner-subtitle">הכוללות ביטוחי חיים, בריאות, מחלות קשות ואובדן כושר עבודה</p>
-            <div class="money-banner-inner">
-                <p class="money-full-text">מעל מליוני שקלים הוחזרו ללקוחותינו בתביעות שאושרו</p>
-                <i class="fas fa-hand-holding-dollar money-icon"></i>
+            <div class="contact-layout">
+                <div class="contact-form-side reveal">
+                    <div class="contact-form-card">
+                        <div class="section-tag">יצירת קשר</div>
+                        <h2 class="section-heading">צור <span class="gold">קשר</span></h2>
+                        <p class="contact-form-desc">לקבלת מידע נוסף, הצעת מחיר חינם וללא התחייבות – מלאו את הטופס ונחזור אליכם בהקדם</p>
+                        <form class="premium-form" id="contactForm" action="#" method="POST">
+                            <div class="form-hp" aria-hidden="true">
+                                <label for="website">אל תמלא</label>
+                                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <h4 class="form-group-title"><i class="fas fa-user" aria-hidden="true"></i> פרטים אישיים</h4>
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <input type="text" name="name" id="name" required placeholder=" " maxlength="100" autocomplete="name">
+                                        <label for="name">שם מלא</label>
+                                    </div>
+                                    <div class="form-field">
+                                        <input type="tel" name="phone" id="phone" required placeholder=" " maxlength="20" autocomplete="tel">
+                                        <label for="phone">טלפון</label>
+                                    </div>
+                                </div>
+                                <div class="form-field">
+                                    <input type="email" name="email" id="email" required placeholder=" " maxlength="254" autocomplete="email">
+                                    <label for="email">אימייל</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h4 class="form-group-title"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> פרטי הפנייה</h4>
+                                <div class="form-field">
+                                    <label for="branch" class="visually-hidden">סניף</label>
+                                    <select name="branch" id="branch" required aria-required="true">
+                                        <option value="" disabled selected>בחר סניף מועדף</option>
+                                        <option value="north">סניף צפון – עפולה</option>
+                                        <option value="center">סניף מרכז – רחובות</option>
+                                    </select>
+                                </div>
+                                <div class="form-field">
+                                    <textarea name="message" id="message" rows="4" placeholder=" " maxlength="2000"></textarea>
+                                    <label for="message">הודעה (אופציונלי)</label>
+                                </div>
+                            </div>
+                            <div class="form-field form-consent">
+                                <input type="checkbox" name="privacy_consent" id="privacyConsent" required aria-required="true" aria-describedby="consent-desc">
+                                <label for="privacyConsent" id="consent-desc">אני מסכים/ה <a href="privacy.html" target="_blank" rel="noopener noreferrer">למדיניות הפרטיות</a> ומאשר/ת את איסוף המידע לצורך יצירת קשר והחזרת פנייתי.</label>
+                            </div>
+                            <button type="submit" class="btn btn-gold btn-full btn-shimmer">
+                                <span>שלח הודעה</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="contact-info-side reveal">
+                    <div class="branch-card">
+                        <div class="branch-header">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>סניף צפון - עפולה</h4>
+                        </div>
+                        <p class="branch-address">המלאכה 21, עפולה</p>
+                        <a href="https://www.google.com/maps/search/המלאכה+21+עפולה" target="_blank" rel="noopener noreferrer" class="branch-map"><i class="fas fa-directions"></i> ניווט לסניף</a>
+                        <div class="branch-contact">
+                            <a href="tel:0772054425"><i class="fas fa-phone-alt"></i> משרד: 077-2054425</a>
+                            <a href="tel:0547151450"><i class="fas fa-mobile-alt"></i> נייד: 054-715-1450</a>
+                        </div>
+                        <a href="mailto:Info@rp-ins.co.il" class="branch-email"><i class="fas fa-envelope"></i> Info@rp-ins.co.il</a>
+                    </div>
+                    <div class="branch-card">
+                        <div class="branch-header">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>סניף מרכז - רחובות</h4>
+                        </div>
+                        <p class="branch-address">פקיעין 2, רחובות</p>
+                        <a href="https://www.google.com/maps/search/פקיעין+2+רחובות" target="_blank" rel="noopener noreferrer" class="branch-map"><i class="fas fa-directions"></i> ניווט לסניף</a>
+                        <div class="branch-contact">
+                            <a href="tel:0772054425"><i class="fas fa-phone-alt"></i> משרד: 077-2054425</a>
+                            <a href="tel:0502663000"><i class="fas fa-mobile-alt"></i> נייד: 050-2663000</a>
+                        </div>
+                        <a href="mailto:Info@rp-ins.co.il" class="branch-email"><i class="fas fa-envelope"></i> Info@rp-ins.co.il</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Trust Strip -->
-    <section class="trust-strip">
+    <!-- About -->
+    <section class="about-section" id="about">
         <div class="container">
-            <div class="trust-grid">
-                <div class="trust-item" data-delay="0">
-                    <div class="trust-icon"><i class="fas fa-shield-halved"></i></div>
-                    <div><strong>הגנה מלאה</strong><span>מכל חברות הביטוח</span></div>
+            <div class="about-layout">
+                <div class="about-visual reveal">
+                    <div class="about-image-stack">
+                        <img src="WhatsApp Image 2026-03-17 at 13.35.12.jpeg" alt="משרד פקאן ביטוח" class="about-img-1" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=80" alt="פגישת ייעוץ" class="about-img-2" loading="lazy">
+                        <div class="about-experience-badge">
+                            <span class="exp-number">10+</span>
+                            <span class="exp-text">שנות<br>ניסיון</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="trust-item" data-delay="1">
-                    <div class="trust-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div><strong>2 סניפים</strong><span>עפולה ורחובות</span></div>
-                </div>
-                <div class="trust-item" data-delay="2">
-                    <div class="trust-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                    <div><strong>התאמה אישית</strong><span>לכל לקוח ולקוח</span></div>
-                </div>
-                <div class="trust-item" data-delay="3">
-                    <div class="trust-icon"><i class="fas fa-gift"></i></div>
-                    <div><strong>הצעת מחיר חינם</strong><span>ללא התחייבות</span></div>
+                <div class="about-text reveal">
+                    <div class="section-tag">הכירו אותנו</div>
+                    <h2 class="section-heading">אודות פקאן <span class="gold">סוכנות לביטוח</span></h2>
+                    <p>פקאן סוכנות לביטוח בע"מ הוקמה בשנת 2015. מאז הקמתה מתמקדת הסוכנות במתן פתרונות ייחודיים ללקוחותיה הרבים. פקאן סוכנות לביטוח גדלה, התקדמה ונמצאת היום בין הסוכנויות המובילות בביטוחי פרט בארץ.</p>
+                    <p>אנו שמים דגש רב בכל הקשור לאיכות השירות והמקצועיות. פקאן סוכנות לביטוח מתמחה במתן שירות ופתרונות מקצועיים בתחומי הביטוח השונים: ביטוחי אובדן כושר עבודה, ביטוחי בריאות, ביטוחי חיים, ביטוחי מנהלים, פנסיה וחסכון.</p>
+                    <a href="#contact" class="btn btn-gold">צור קשר <i class="fas fa-arrow-left"></i></a>
                 </div>
             </div>
         </div>
@@ -267,31 +341,6 @@
                         <a href="#contact" class="card-link">קבל הצעה <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section class="about-section" id="about">
-        <div class="container">
-            <div class="about-layout">
-                <div class="about-visual reveal">
-                    <div class="about-image-stack">
-                        <img src="WhatsApp Image 2026-03-17 at 13.35.12.jpeg" alt="משרד פקאן ביטוח" class="about-img-1" loading="lazy">
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=80" alt="פגישת ייעוץ" class="about-img-2" loading="lazy">
-                        <div class="about-experience-badge">
-                            <span class="exp-number">10+</span>
-                            <span class="exp-text">שנות<br>ניסיון</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-text reveal">
-                    <div class="section-tag">הכירו אותנו</div>
-                    <h2 class="section-heading">אודות פקאן <span class="gold">סוכנות לביטוח</span></h2>
-                    <p>פקאן סוכנות לביטוח בע"מ הוקמה בשנת 2015. מאז הקמתה מתמקדת הסוכנות במתן פתרונות ייחודיים ללקוחותיה הרבים. פקאן סוכנות לביטוח גדלה, התקדמה ונמצאת היום בין הסוכנויות המובילות בביטוחי פרט בארץ.</p>
-                    <p>אנו שמים דגש רב בכל הקשור לאיכות השירות והמקצועיות. פקאן סוכנות לביטוח מתמחה במתן שירות ופתרונות מקצועיים בתחומי הביטוח השונים: ביטוחי אובדן כושר עבודה, ביטוחי בריאות, ביטוחי חיים, ביטוחי מנהלים, פנסיה וחסכון.</p>
-                    <a href="#contact" class="btn btn-gold">צור קשר <i class="fas fa-arrow-left"></i></a>
-                </div>
             </div>
         </div>
     </section>
@@ -344,6 +393,97 @@
                     <div class="mosaic-icon"><i class="fas fa-hand-holding-medical"></i></div>
                     <h4>ביטוח תאונות אישיות</h4>
                     <p>ביטוח תאונות אישיות ונכות תעסוקתית עקב תאונה</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Money Returned Banner -->
+    <section class="money-banner">
+        <div class="container">
+            <p class="money-banner-title">הצלחות בתביעות</p>
+            <p class="money-banner-subtitle">הכוללות ביטוחי חיים, בריאות, מחלות קשות ואובדן כושר עבודה</p>
+            <div class="money-banner-inner">
+                <p class="money-full-text">מליוני שקלים שהוחזרו ללקוחותינו בתביעות שטופלו על ידי הסוכנות</p>
+                <i class="fas fa-hand-holding-dollar money-icon"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results & Proofs -->
+    <section class="results-section" id="results">
+        <div class="container">
+            <div class="section-intro reveal">
+                <div class="section-tag">תוצאות אמיתיות</div>
+                <h2 class="section-heading">לקוחות מספרים <span class="gold">והנה הוכחות</span></h2>
+                <p class="section-sub">סיפורי הצלחה אמיתיים ומסמכים רשמיים – אנחנו עוזרים לאנשים לקבל את מה שהם זכאים לו</p>
+            </div>
+
+            <!-- Proof Documents -->
+            <div class="results-proofs reveal">
+                <h3 class="proofs-title"><i class="fas fa-file-contract"></i> מסמכי אישור רשמיים – הוכחות מהשטח</h3>
+                <p class="proofs-desc">אישורי תשלום ותגמולים שאושרו ללקוחותינו – חברות ביטוח מובילות</p>
+                <div class="proofs-grid">
+                    <div class="proof-card">
+                        <a href="assets/proof-phoenix-siyud.png" target="_blank" rel="noopener noreferrer" class="proof-link">
+                            <img src="assets/proof-phoenix-siyud.png" alt="אישור זכאות ביטוח סיעוד – הפניקס" loading="lazy">
+                            <div class="proof-overlay">
+                                <span>הפניקס – ביטוח סיעוד</span>
+                                <small>תגמול חודשי 2,721 ש"ח • 60 חודשים</small>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="proof-card">
+                        <a href="assets/proof-critical-illness.png" target="_blank" rel="noopener noreferrer" class="proof-link">
+                            <img src="assets/proof-critical-illness.png" alt="אישור תשלום מחלה קשה" loading="lazy">
+                            <div class="proof-overlay">
+                                <span>פיצוי מחלה קשה</span>
+                                <small>55,810 ש"ח אושרו לתשלום</small>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="proof-card">
+                        <a href="assets/proof-menora.png" target="_blank" rel="noopener noreferrer" class="proof-link">
+                            <img src="assets/proof-menora.png" alt="הודעת תשלום מנורה מבטחים" loading="lazy">
+                            <div class="proof-overlay">
+                                <span>מנורה מבטחים</span>
+                                <small>2,643 ש"ח – השתתפות בניתוח</small>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="proof-card">
+                        <a href="assets/proof-phoenix-accident.png" target="_blank" rel="noopener noreferrer" class="proof-link">
+                            <img src="assets/proof-phoenix-accident.png" alt="הודעת תשלום תאונות אישיות – הפניקס" loading="lazy">
+                            <div class="proof-overlay">
+                                <span>הפניקס – תאונות אישיות</span>
+                                <small>3,310 ש"ח תגמולים</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <section class="trust-strip">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item" data-delay="0">
+                    <div class="trust-icon"><i class="fas fa-shield-halved"></i></div>
+                    <div><strong>הגנה מלאה</strong><span>מכל חברות הביטוח</span></div>
+                </div>
+                <div class="trust-item" data-delay="1">
+                    <div class="trust-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div><strong>2 סניפים</strong><span>עפולה ורחובות</span></div>
+                </div>
+                <div class="trust-item" data-delay="2">
+                    <div class="trust-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <div><strong>התאמה אישית</strong><span>לכל לקוח ולקוח</span></div>
+                </div>
+                <div class="trust-item" data-delay="3">
+                    <div class="trust-icon"><i class="fas fa-gift"></i></div>
+                    <div><strong>הצעת מחיר חינם</strong><span>ללא התחייבות</span></div>
                 </div>
             </div>
         </div>
@@ -422,61 +562,6 @@
                     <div class="partner-logo-item"><img src="assets/partners/mor.png" alt="מור בית השקעות"></div>
                     <div class="partner-logo-item"><img src="assets/partners/meitav.png" alt="מיטב בית השקעות"></div>
                     <div class="partner-logo-item"><img src="assets/partners/altshuler.png" alt="אלטשולר שחם"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Results & Proofs -->
-    <section class="results-section" id="results">
-        <div class="container">
-            <div class="section-intro reveal">
-                <div class="section-tag">תוצאות אמיתיות</div>
-                <h2 class="section-heading">לקוחות מספרים <span class="gold">והנה הוכחות</span></h2>
-                <p class="section-sub">סיפורי הצלחה אמיתיים ומסמכים רשמיים – אנחנו עוזרים לאנשים לקבל את מה שהם זכאים לו</p>
-            </div>
-
-            <!-- Proof Documents -->
-            <div class="results-proofs reveal">
-                <h3 class="proofs-title"><i class="fas fa-file-contract"></i> מסמכי אישור רשמיים – הוכחות מהשטח</h3>
-                <p class="proofs-desc">אישורי תשלום ותגמולים שאושרו ללקוחותינו – חברות ביטוח מובילות</p>
-                <div class="proofs-grid">
-                    <div class="proof-card">
-                        <a href="assets/proof-phoenix-siyud.png" target="_blank" rel="noopener noreferrer" class="proof-link">
-                            <img src="assets/proof-phoenix-siyud.png" alt="אישור זכאות ביטוח סיעוד – הפניקס" loading="lazy">
-                            <div class="proof-overlay">
-                                <span>הפניקס – ביטוח סיעוד</span>
-                                <small>תגמול חודשי 2,721 ש"ח • 60 חודשים</small>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="proof-card">
-                        <a href="assets/proof-critical-illness.png" target="_blank" rel="noopener noreferrer" class="proof-link">
-                            <img src="assets/proof-critical-illness.png" alt="אישור תשלום מחלה קשה" loading="lazy">
-                            <div class="proof-overlay">
-                                <span>פיצוי מחלה קשה</span>
-                                <small>55,810 ש"ח אושרו לתשלום</small>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="proof-card">
-                        <a href="assets/proof-menora.png" target="_blank" rel="noopener noreferrer" class="proof-link">
-                            <img src="assets/proof-menora.png" alt="הודעת תשלום מנורה מבטחים" loading="lazy">
-                            <div class="proof-overlay">
-                                <span>מנורה מבטחים</span>
-                                <small>2,643 ש"ח – השתתפות בניתוח</small>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="proof-card">
-                        <a href="assets/proof-phoenix-accident.png" target="_blank" rel="noopener noreferrer" class="proof-link">
-                            <img src="assets/proof-phoenix-accident.png" alt="הודעת תשלום תאונות אישיות – הפניקס" loading="lazy">
-                            <div class="proof-overlay">
-                                <span>הפניקס – תאונות אישיות</span>
-                                <small>3,310 ש"ח תגמולים</small>
-                            </div>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -585,109 +670,6 @@
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-box reveal">
-                <div class="cta-bg-pattern"></div>
-                <h2>מוכנים להתחיל?</h2>
-                <p>קבלו הצעת מחיר חינם וללא התחייבות</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-gold btn-lg">צור קשר <i class="fas fa-arrow-left"></i></a>
-                    <a href="tel:0772054425" class="btn btn-glass btn-lg"><i class="fas fa-phone-alt"></i> 077-2054425</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <div class="contact-layout">
-                <div class="contact-form-side reveal">
-                    <div class="contact-form-card">
-                        <div class="section-tag">יצירת קשר</div>
-                        <h2 class="section-heading">צור <span class="gold">קשר</span></h2>
-                        <p class="contact-form-desc">לקבלת מידע נוסף, הצעת מחיר חינם וללא התחייבות – מלאו את הטופס ונחזור אליכם בהקדם</p>
-                        <form class="premium-form" id="contactForm" action="#" method="POST">
-                            <div class="form-hp" aria-hidden="true">
-                                <label for="website">אל תמלא</label>
-                                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
-                            </div>
-                            <div class="form-group">
-                                <h4 class="form-group-title"><i class="fas fa-user" aria-hidden="true"></i> פרטים אישיים</h4>
-                                <div class="form-row">
-                                    <div class="form-field">
-                                        <input type="text" name="name" id="name" required placeholder=" " maxlength="100" autocomplete="name">
-                                        <label for="name">שם מלא</label>
-                                    </div>
-                                    <div class="form-field">
-                                        <input type="tel" name="phone" id="phone" required placeholder=" " maxlength="20" autocomplete="tel">
-                                        <label for="phone">טלפון</label>
-                                    </div>
-                                </div>
-                                <div class="form-field">
-                                    <input type="email" name="email" id="email" required placeholder=" " maxlength="254" autocomplete="email">
-                                    <label for="email">אימייל</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h4 class="form-group-title"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> פרטי הפנייה</h4>
-                                <div class="form-field">
-                                    <label for="branch" class="visually-hidden">סניף</label>
-                                    <select name="branch" id="branch" required aria-required="true">
-                                        <option value="" disabled selected>בחר סניף מועדף</option>
-                                        <option value="north">סניף צפון – עפולה</option>
-                                        <option value="center">סניף מרכז – רחובות</option>
-                                    </select>
-                                </div>
-                                <div class="form-field">
-                                    <textarea name="message" id="message" rows="4" placeholder=" " maxlength="2000"></textarea>
-                                    <label for="message">הודעה (אופציונלי)</label>
-                                </div>
-                            </div>
-                            <div class="form-field form-consent">
-                                <input type="checkbox" name="privacy_consent" id="privacyConsent" required aria-required="true" aria-describedby="consent-desc">
-                                <label for="privacyConsent" id="consent-desc">אני מסכים/ה <a href="privacy.html" target="_blank" rel="noopener noreferrer">למדיניות הפרטיות</a> ומאשר/ת את איסוף המידע לצורך יצירת קשר והחזרת פנייתי.</label>
-                            </div>
-                            <button type="submit" class="btn btn-gold btn-full btn-shimmer">
-                                <span>שלח הודעה</span>
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                <div class="contact-info-side reveal">
-                    <div class="branch-card">
-                        <div class="branch-header">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <h4>סניף צפון - עפולה</h4>
-                        </div>
-                        <p class="branch-address">המלאכה 21, עפולה</p>
-                        <a href="https://www.google.com/maps/search/המלאכה+21+עפולה" target="_blank" rel="noopener noreferrer" class="branch-map"><i class="fas fa-directions"></i> ניווט לסניף</a>
-                        <div class="branch-contact">
-                            <a href="tel:0772054425"><i class="fas fa-phone-alt"></i> משרד: 077-2054425</a>
-                            <a href="tel:0547151450"><i class="fas fa-mobile-alt"></i> נייד: 054-715-1450</a>
-                        </div>
-                        <a href="mailto:Info@rp-ins.co.il" class="branch-email"><i class="fas fa-envelope"></i> Info@rp-ins.co.il</a>
-                    </div>
-                    <div class="branch-card">
-                        <div class="branch-header">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <h4>סניף מרכז - רחובות</h4>
-                        </div>
-                        <p class="branch-address">פקיעין 2, רחובות</p>
-                        <a href="https://www.google.com/maps/search/פקיעין+2+רחובות" target="_blank" rel="noopener noreferrer" class="branch-map"><i class="fas fa-directions"></i> ניווט לסניף</a>
-                        <div class="branch-contact">
-                            <a href="tel:0772054425"><i class="fas fa-phone-alt"></i> משרד: 077-2054425</a>
-                            <a href="tel:0502663000"><i class="fas fa-mobile-alt"></i> נייד: 050-2663000</a>
-                        </div>
-                        <a href="mailto:Info@rp-ins.co.il" class="branch-email"><i class="fas fa-envelope"></i> Info@rp-ins.co.il</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     </main>
     <!-- Footer -->
