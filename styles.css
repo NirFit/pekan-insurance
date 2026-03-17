@@ -227,14 +227,14 @@ a { text-decoration: none; }
 
 /* === Trust Strip === */
 .trust-strip { padding: 32px 0 0; position: relative; }
-.trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--dark-2); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); overflow: hidden; }
-.trust-item { display: flex; align-items: center; gap: 16px; padding: 28px 24px; border-left: 1px solid var(--glass-border); transition: background 0.3s; }
+.trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-lg); overflow: hidden; backdrop-filter: blur(8px); }
+.trust-item { display: flex; align-items: center; gap: 16px; padding: 28px 24px; border-left: 1px solid rgba(255,255,255,0.08); transition: background 0.3s; }
 .trust-item:last-child { border-left: none; }
-.trust-item:hover { background: var(--glass); }
-.trust-icon { width: 48px; height: 48px; background: rgba(192,192,192,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.trust-item:hover { background: rgba(255,255,255,0.08); }
+.trust-icon { width: 48px; height: 48px; background: rgba(255,255,255,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .trust-icon i { color: var(--silver); font-size: 1.2rem; }
 .trust-item strong { display: block; color: var(--white); font-weight: 600; font-size: 0.95rem; }
-.trust-item span { font-size: 0.8rem; color: var(--gray); }
+.trust-item span { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
 
 /* === Section Common === */
 .section-intro { text-align: center; margin-bottom: 64px; }
