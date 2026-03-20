@@ -199,15 +199,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Reveal on Scroll ===
     const reveals = document.querySelectorAll('.reveal');
+    const isMobile = window.innerWidth <= 768;
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const delay = (parseInt(entry.target.dataset.delay, 10) || 0) * 150;
+                // במובייל – ללא עיכוב כדי למנוע ריקים
+                const delay = isMobile ? 0 : (parseInt(entry.target.dataset.delay, 10) || 0) * 150;
                 setTimeout(() => entry.target.classList.add('visible'), delay);
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.08 });
     reveals.forEach(el => revealObserver.observe(el));
 
     // === Counter Animation ===

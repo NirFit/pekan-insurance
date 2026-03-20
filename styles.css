@@ -535,12 +535,23 @@ a { text-decoration: none; }
     /* WhatsApp - safe area למכשירים עם notch */
     .whatsapp-float { bottom: max(20px, env(safe-area-inset-bottom)); left: max(16px, env(safe-area-inset-left)); }
     /* סקציות - הפחתת padding */
-    .cards-section, .about-section, .services-section, .results-section, .reviews-section, .faq-section, .contact-section { padding: 60px 0; }
-    .partners-section { padding: 60px 0; }
-    .section-intro { margin-bottom: 40px; }
+    .cards-section, .about-section, .services-section, .results-section, .reviews-section, .faq-section, .contact-section { padding: 48px 0; }
+    .partners-section { padding: 36px 0; }
+    .money-banner { padding: 20px 0; }
+    .section-intro { margin-bottom: 32px; }
     .section-heading { font-size: clamp(1.6rem, 5vw, 2rem); }
     .cta-section { padding: 50px 0; }
     .cta-box h2 { font-size: 1.6rem; }
+    /* תיקון reveal על מובייל – מניעת רווחים ריקים */
+    .mosaic-item.reveal { transition-delay: 0ms !important; }
+    /* money-banner – מנע גלישת טקסט */
+    .money-stat { max-width: 100%; }
+    .money-full-text { font-size: 1.3rem; word-break: keep-all; }
+    .money-number { font-size: 2rem; }
+    /* results-story */
+    .results-story { padding: 28px 20px; }
+    /* proofs title */
+    .proofs-title { font-size: 1.15rem; text-align: center; flex-wrap: wrap; justify-content: center; }
 }
 
 /* מובייל קטן מאוד - עד 480px */
