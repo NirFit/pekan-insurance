@@ -6,5 +6,5 @@
  */
 const CONFIG = {
     FORMSPREE_ID: 'YOUR_FORMSPREE_ID',  // החלף ב-ID מהחשבון שלך ב-formspree.io
-    GA_ID: ''  // למשל: 'G-XXXXXXXXXX' - השאר ריק אם אין לך
+    GA_ID: 'G-TK0Y6389TH'
 };

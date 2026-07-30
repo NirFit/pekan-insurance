@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /send.php
 
-Sitemap: https://nirfit.github.io/pekan-insurance/sitemap.xml
+Sitemap: https://www.pekan-ins.co.il/sitemap.xml

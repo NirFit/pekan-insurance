@@ -4,3 +4,6 @@
 .venv
 venv/
 node_modules/
+.claude/
+.cursor/
+.wrangler/

@@ -1,3 +1,27 @@
+// === Preloader - חייב לרוץ ראשון ובנפרד מכל השאר ===
+// אם קוד אחר נכשל (למשל localStorage חסום בדפדפן נייד), האתר לא ייתקע על מסך הפתיחה.
+(function () {
+    function hidePreloader() {
+        document.getElementById('preloader')?.classList.add('hidden');
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => setTimeout(hidePreloader, 1200));
+    } else {
+        setTimeout(hidePreloader, 1200);
+    }
+    window.addEventListener('load', () => setTimeout(hidePreloader, 800));
+    setTimeout(hidePreloader, 3500);
+})();
+
+// === אחסון מקומי בטוח ===
+// דפדפני נייד מסוימים (Safari עם חסימת עוגיות, דפדפנים מוטמעים באפליקציות)
+// זורקים SecurityError בגישה ל-localStorage. בלי העטיפה הזאת שגיאה אחת מפילה את כל הסקריפט.
+const safeStorage = {
+    get(key) { try { return window.localStorage.getItem(key); } catch (e) { return null; } },
+    set(key, value) { try { window.localStorage.setItem(key, value); return true; } catch (e) { return false; } },
+    remove(key) { try { window.localStorage.removeItem(key); return true; } catch (e) { return false; } }
+};
+
 // === הסרת כפתורי קרוסלה - רץ מיד לפני DOMContentLoaded ===
 (function(){ function hide(){ var s='.reviews-carousel-btn,.reviews-carousel-prev,.reviews-carousel-next,.reviews-carousel-dots,#reviewsPrev,#reviewsNext,#reviewsDots,.reviews-carousel-wrap>button'; document.querySelectorAll(s).forEach(function(el){ el.remove(); }); } hide(); if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',hide); } setTimeout(hide,100); setTimeout(hide,500); setTimeout(hide,1500); })();
 
@@ -20,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const consent = localStorage.getItem(COOKIE_KEY);
+    const consent = safeStorage.get(COOKIE_KEY);
     if (!consent) {
         cookieBanner?.removeAttribute('hidden');
     } else if (consent === 'all') {
@@ -28,26 +52,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.getElementById('cookieAccept')?.addEventListener('click', () => {
-        localStorage.setItem(COOKIE_KEY, 'all');
+        safeStorage.set(COOKIE_KEY, 'all');
         loadGoogleAnalytics();
         cookieBanner?.setAttribute('hidden', '');
     });
     document.getElementById('cookieDecline')?.addEventListener('click', () => {
-        localStorage.setItem(COOKIE_KEY, 'essential');
+        safeStorage.set(COOKIE_KEY, 'essential');
+        cookieBanner?.setAttribute('hidden', '');
+    });
+    document.getElementById('cookieManage')?.addEventListener('click', () => {
+        const modal = document.getElementById('cookiePrefsModal');
+        const toggle = document.getElementById('cookieAnalyticsToggle');
+        if (toggle) toggle.checked = safeStorage.get(COOKIE_KEY) === 'all';
+        modal?.showModal();
+    });
+    document.getElementById('cookieSavePrefs')?.addEventListener('click', () => {
+        const analytics = document.getElementById('cookieAnalyticsToggle')?.checked;
+        safeStorage.set(COOKIE_KEY, analytics ? 'all' : 'essential');
+        if (analytics) loadGoogleAnalytics();
+        document.getElementById('cookiePrefsModal')?.close();
+        cookieBanner?.setAttribute('hidden', '');
+    });
+    document.getElementById('cookieAcceptAll')?.addEventListener('click', () => {
+        safeStorage.set(COOKIE_KEY, 'all');
+        loadGoogleAnalytics();
+        document.getElementById('cookiePrefsModal')?.close();
         cookieBanner?.setAttribute('hidden', '');
     });
     document.getElementById('changeCookiePref')?.addEventListener('click', () => {
-        localStorage.removeItem(COOKIE_KEY);
+        safeStorage.remove(COOKIE_KEY);
         document.getElementById('privacy-policy')?.close();
         cookieBanner?.removeAttribute('hidden');
     });
 
-    // === Preloader ===
-    const preloader = document.getElementById('preloader');
-    window.addEventListener('load', () => {
-        setTimeout(() => preloader?.classList.add('hidden'), 2000);
-    });
-    setTimeout(() => preloader?.classList.add('hidden'), 3500);
+    // הפרילודר מטופל ב-IIFE בראש הקובץ, מחוץ למאזין הזה - בכוונה.
 
     // === Navbar ===
     const navbar = document.getElementById('navbar');
@@ -269,7 +307,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // === Contact Form (Formspree) ===
+    // === Contact Form (מסירה דרך WhatsApp) ===
+    const WHATSAPP_NUMBER = '972547151450';
     const contactForm = document.getElementById('contactForm');
     let lastSubmitTime = 0;
     contactForm?.addEventListener('submit', async (e) => {
@@ -311,48 +350,38 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> שולח...';
         btn.disabled = true;
 
-        const formId = typeof CONFIG !== 'undefined' && CONFIG.FORMSPREE_ID && CONFIG.FORMSPREE_ID !== 'YOUR_FORMSPREE_ID'
-            ? CONFIG.FORMSPREE_ID
-            : null;
+        try {
+            const formData = new FormData(contactForm);
+            const sanitize = (str) => {
+                if (typeof str !== 'string') return '';
+                return str.trim().replace(/<[^>]*>/g, '').replace(/javascript:/gi, '').replace(/on\w+=/gi, '').slice(0, 2000);
+            };
+            ['name', 'phone', 'email', 'branch', 'message'].forEach(field => {
+                const val = formData.get(field);
+                formData.set(field, sanitize(String(val || '')));
+            });
+            // האתר מתארח על Cloudflare Pages שאינו מריץ קוד צד-שרת, ולכן הפנייה
+            // נמסרת דרך WhatsApp - כך אף ליד לא הולך לאיבוד.
+            const val = (f) => String(formData.get(f) || '').trim();
+            const lines = [
+                'פנייה חדשה מהאתר',
+                'שם: ' + (val('name') || '-'),
+                'טלפון: ' + (val('phone') || '-'),
+                'אימייל: ' + (val('email') || '-')
+            ];
+            if (val('branch')) lines.push('סניף: ' + val('branch'));
+            if (val('message')) lines.push('הודעה: ' + val('message'));
 
-        if (formId) {
-            try {
-                const formData = new FormData(contactForm);
-                // Sanitize: trim, limit length, strip HTML/script to prevent XSS
-                const sanitize = (str) => {
-                    if (typeof str !== 'string') return '';
-                    return str
-                        .trim()
-                        .replace(/<[^>]*>/g, '')
-                        .replace(/javascript:/gi, '')
-                        .replace(/on\w+=/gi, '')
-                        .slice(0, 2000);
-                };
-                formData.delete('website'); // הסרת שדה honeypot
-                ['name', 'phone', 'email', 'branch', 'message'].forEach(field => {
-                    const val = formData.get(field);
-                    formData.set(field, sanitize(String(val || '')));
-                });
-                const res = await fetch(`https://formspree.io/f/${formId}`, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-                if (res.ok) {
-                    btn.innerHTML = '<i class="fas fa-check"></i> נשלח בהצלחה!';
-                    btn.style.background = 'linear-gradient(135deg, #c0c0c0, #909090)';
-                    contactForm.reset();
-                } else {
-                    throw new Error('שגיאה בשליחה');
-                }
-            } catch (err) {
-                btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> שגיאה - נסה שוב';
-                btn.style.background = 'linear-gradient(135deg, #606060, #404040)';
-            }
-        } else {
-            btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> טופס לא מוגדר';
-            btn.style.background = 'linear-gradient(135deg, #909090, #606060)';
-            console.warn('Formspree לא מוגדר ב-config.js - הוסף FORMSPREE_ID לקבלת פניות');
+            const waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+            const win = window.open(waUrl, '_blank', 'noopener');
+            if (!win) window.location.href = waUrl;
+
+            btn.innerHTML = '<i class="fas fa-check"></i> נשלח בהצלחה!';
+            btn.style.background = 'linear-gradient(135deg, #c0c0c0, #909090)';
+            contactForm.reset();
+        } catch (err) {
+            btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> שגיאה - נסה שוב';
+            btn.style.background = 'linear-gradient(135deg, #606060, #404040)';
         }
         setTimeout(() => {
             btn.innerHTML = originalHTML;
