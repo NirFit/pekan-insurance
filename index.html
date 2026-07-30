@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://formspree.io https://www.google-analytics.com https://www.googletagmanager.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formspree.io;">
-    <meta http-equiv="X-Frame-Options" content="DENY">
+    <!-- frame-ancestors ו-X-Frame-Options אינם נתמכים דרך meta ולכן הוסרו - נדרש header מצד השרת -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://formspree.io https://www.google-analytics.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self' https://formspree.io;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>פקאן סוכנות לביטוח בע"מ | עפולה ורחובות - ביטוח מקצועי מאז 2015</title>
@@ -344,8 +344,8 @@
             </div>
 
             <!-- Reviews inside results section -->
-            <div style="margin-top: 96px;">
-                <div class="section-intro reveal" style="margin-bottom: 32px;">
+            <div class="mt-block">
+                <div class="section-intro reveal mb-sm">
                     <h2 class="section-heading">מה הלקוחות <span class="gold">אומרים</span></h2>
                 </div>
                 <div class="reviews-carousel-wrap" id="testimonials">
@@ -392,10 +392,10 @@
             <div class="why-bg-overlay"></div>
         </div>
         <div class="container">
-            <div class="section-intro light reveal" style="margin-bottom: 48px;">
+            <div class="section-intro light reveal mb-md">
                 <h2 class="section-heading light">למה <span class="gold">פקאן?</span></h2>
             </div>
-            <div class="trust-grid" style="margin-bottom: 80px;">
+            <div class="trust-grid mb-lg">
                 <div class="trust-item" data-delay="0">
                     <div class="trust-icon"><i class="fas fa-shield-halved"></i></div>
                     <div><strong>הגנה מלאה</strong><span>מכל חברות הביטוח</span></div>
