@@ -78,6 +78,12 @@ a { text-decoration: none; }
 .gold { color: var(--silver); }
 .accent { color: var(--silver); }
 
+/* מרווחים - במקום style inline, שנחסם על ידי ה-CSP של האתר */
+.mt-block { margin-top: 96px; }
+.mb-sm { margin-bottom: 32px; }
+.mb-md { margin-bottom: 48px; }
+.mb-lg { margin-bottom: 80px; }
+
 /* === Preloader === */
 .preloader { position: fixed; inset: 0; z-index: 9999; background: var(--dark); display: flex; align-items: center; justify-content: center; transition: opacity 0.6s, visibility 0.6s; }
 .preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -87,6 +93,10 @@ a { text-decoration: none; }
 .preloader-bar { width: 320px; height: 4px; background: var(--dark-3); border-radius: 4px; overflow: hidden; }
 .preloader-fill { height: 100%; background: var(--silver); border-radius: 4px; animation: preload-fill 1.8s ease forwards; }
 @keyframes preload-fill { from { width: 0; } to { width: 100%; } }
+/* רשת ביטחון ללא JavaScript: מסך הפתיחה נסגר מעצמו גם אם script.js לא נטען
+   או נחסם, כדי שהאתר לא ייתקע על הלוגו. */
+.preloader { animation: preloader-failsafe 0.4s ease 4s forwards; }
+@keyframes preloader-failsafe { to { opacity: 0; visibility: hidden; pointer-events: none; } }
 @keyframes pulse-glow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.1); } }
 
 /* === כפתור נגישות - תקן 5568 === */
